@@ -321,6 +321,8 @@ h3.my-profession {
     border-right: 10px solid var(--skin-color);
     right: 20px;
     bottom: -40px;
+    margin-bottom:55px;
+    margin-right:-40px;
 }
 
 .home-img::before {
@@ -346,6 +348,8 @@ h3.my-profession {
 .about .about-content {
     flex: 0 0 100%;
     max-width: 100%;
+    /* display: flex;
+    flex-wrap: wrap; */
 }
 
 .about .about-content .about-text {
@@ -459,6 +463,9 @@ h3.my-profession {
     flex: 0 0 50%;
     max-width: 50%;
     margin-top: 30px;
+    /* flex: 1 1 50%;
+    padding: 0 15px;
+    box-sizing: border-box; */
 }
 
 .about .about-content h3.title {
@@ -531,11 +538,11 @@ h3.my-profession {
     color: var(--text-black-900);
 }
 
-.about .about-content .timeline .timeline-text {
+.about .about-content .timeline .timeline-text, h4, ul, li {
     line-height: 25px;
     font-size: 16px;
     text-align: justify;
-    columns: var(--text-black-700);
+    color: var(--text-black-700);
 }
 
 
@@ -557,6 +564,7 @@ h3.my-profession {
     border-radius: 10px;
     text-align: center;
     transition: all 0.3s ease;
+    padding: 6px 12px;
 }
 
 .service .service-item .service-item-inner:hover {
@@ -601,6 +609,7 @@ h3.my-profession {
     font-size: 16px;
     color: var(--text-black-700);
     line-height: 25px;
+    text-align: left;
 }
 
 
