@@ -1,4 +1,3 @@
-index.html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,15 +5,16 @@ index.html
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dead_Coder</title>
+    <title>Durganand Kumar Thakur | Portfolio</title>
 
+    <!-- Meta Tags -->
     <meta name="description"
         content="Hi, I'm Durganand Kumar Thakur. Laravel Developer with experience building end-to-end CRM systems, Admin panels, and dynamic websites.">
     <meta name="keywords"
         content="Durganand Kumar Thakur, Portfolio, Laravel Developer, PHP Developer, MySQL, Vite, CRM Developer, Web Developer">
     <meta name="author" content="Durganand Kumar Thakur">
 
-    <!-- Open Graph (for social media preview) -->
+    <!-- Open Graph -->
     <meta property="og:title" content="Durganand Kumar Thakur | Laravel Developer Portfolio">
     <meta property="og:description"
         content="Explore my projects and skills as a Laravel Developer building CRM systems, Admin panels, and dynamic websites.">
@@ -22,29 +22,22 @@ index.html
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://durganandkumarthakur.github.io/Portfolio/images/preview.jpg">
 
-    <!-- ===== Favicon for browser tab ===== -->
-    <link rel="icon" type="image/png" href="images/logo.png"> <!-- PNG format -->
-    <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon"> <!-- Optional ICO fallback -->
-    <link rel="apple-touch-icon" href="images/logo.png"> <!-- For iOS devices -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/logo.png">
 
-    <!-- ===== CSS Files ===== -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/skins/color-1.css">
+    <!-- CSS Files -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
-
-    <!-- === Style Switcher === -->
-    <link rel="stylesheet" href="css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
-    <link rel="stylesheet" href="css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
-    <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
-    <link rel="stylesheet" href="css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
-    <link rel="stylesheet" href="css/skins/color-5.css" class="alternate-style" title="color-5" disabled>
-    <link rel="stylesheet" href="css/style-switcher.css">
-</head>
-
-
+    
     <style>
-        /* Additional CSS for enhanced features */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
             --primary-color: #ec1839;
             --secondary-color: #0f172a;
@@ -53,6 +46,7 @@ index.html
             --bg-color: #fff;
             --card-bg: #f9fafb;
             --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
         }
 
         .dark-mode {
@@ -66,361 +60,15 @@ index.html
         }
 
         body {
-            transition: all 0.3s ease;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-        }
-
-        /* Enhanced Home Section */
-        .home {
+            transition: var(--transition);
+            overflow-x: hidden;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
         }
 
-        .home::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(236, 24, 57, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
-            z-index: -1;
-        }
-
-        .home-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hello {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.5s forwards;
-        }
-
-        .my-profession {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.8s forwards;
-        }
-
-        .home-info p {
-            margin-bottom: 30px;
-            opacity: 0;
-            animation: fadeInUp 1s ease 1.1s forwards;
-        }
-
-        .home-img {
-            position: relative;
-            opacity: 0;
-            animation: fadeInRight 1s ease 1.4s forwards;
-        }
-
-        .home-img::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            width: 100%;
-            height: 100%;
-            border: 5px solid var(--primary-color);
-            border-radius: 10px;
-            z-index: -1;
-            animation: pulse 2s infinite;
-        }
-
-        .home-img img {
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-        }
-
-        /* Enhanced Skills Section */
-        .skill-item {
-            margin-bottom: 20px;
-        }
-
-        .skill-percent {
-            position: absolute;
-            right: 0;
-            top: -30px;
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-
-        .progress {
-            height: 10px;
-            background-color: #e9ecef;
-            border-radius: 5px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .progress-in {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-            border-radius: 5px;
-            position: relative;
-            transition: width 1.5s ease-in-out;
-        }
-
-        /* Enhanced Portfolio */
-        .portfolio-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .portfolio-item-inner {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-        }
-
-        .portfolio-img img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .portfolio-item:hover .portfolio-img img {
-            transform: scale(1.1);
-        }
-
-        .portfolio-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(15, 23, 42, 0.8);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-
-        .portfolio-overlay h4 {
-            color: white;
-            margin-bottom: 10px;
-            font-size: 1.5rem;
-        }
-
-        .portfolio-overlay p {
-            color: #e2e8f0;
-            margin-bottom: 20px;
-        }
-
-        .portfolio-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .portfolio-links a {
-            color: white;
-            background-color: var(--primary-color);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .portfolio-links a:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-3px);
-        }
-
-        /* Contact Form */
-        .contact-form {
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: all 0.3s ease;
-        }
-
-        .form-control:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 2px rgba(236, 24, 57, 0.2);
-            outline: none;
-        }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-
-        .submit-btn:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-3px);
-        }
-
-        /* Social Links */
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: var(--card-bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow);
-        }
-
-        .social-links a:hover {
-            background-color: var(--primary-color);
-            color: white;
-            transform: translateY(-5px);
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.05);
-                opacity: 0.7;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        /* Dark Mode Toggle */
-        .dark-mode-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: var(--primary-color);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 1000;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-        }
-
-        .dark-mode-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: var(--accent-color);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow);
-        }
-
-        .back-to-top.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            background-color: var(--primary-color);
-            transform: translateY(-3px);
-        }
-
-        /* Loading Animation */
+        /* Loading Screen */
         .loading-screen {
             position: fixed;
             top: 0;
@@ -450,459 +98,1244 @@ index.html
         }
 
         @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
+            to { transform: rotate(360deg); }
         }
 
-        /* Testimonials */
-        .testimonial-item {
+        /* Main Layout */
+        .portfolio-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Side Navigation */
+        .side-nav {
+            width: 80px;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #1a1a2e 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 0;
+            position: fixed;
+            height: 100vh;
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .nav-logo {
+            margin-bottom: 40px;
+        }
+
+        .nav-logo a {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            flex: 1;
+        }
+
+        .nav-item {
+            position: relative;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .nav-item.active .nav-icon {
+            background-color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .nav-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            transition: var(--transition);
+        }
+
+        .nav-icon:hover {
+            background-color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .nav-tooltip {
+            position: absolute;
+            left: 70px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .nav-tooltip::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 6px solid transparent;
+            border-right-color: var(--primary-color);
+        }
+
+        .nav-item:hover .nav-tooltip {
+            opacity: 1;
+            visibility: visible;
+            left: 80px;
+        }
+
+        .nav-bottom {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            margin-left: 80px;
+            position: relative;
+        }
+
+        /* Section Styling */
+        .section {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 40px;
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(50px);
+            transition: all 0.5s ease;
+            z-index: 1;
+        }
+
+        .section.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+            z-index: 2;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 100%;
+        }
+
+        /* Home Section */
+        .home-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .home-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .home-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .home-text h1 .highlight {
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .home-text h2 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+        }
+
+        .home-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: var(--text-color);
+            opacity: 0.9;
+        }
+
+        .home-buttons {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #d01636;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(236, 24, 57, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .home-social {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: var(--card-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            transition: var(--transition);
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .home-image {
+            position: relative;
+        }
+
+        .home-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .image-frame {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: calc(100% + 40px);
+            height: calc(100% + 40px);
+            border: 3px solid var(--primary-color);
+            border-radius: 20px;
+            z-index: -1;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* About Section */
+        .about-section {
+            padding-top: 80px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .about-card {
             background-color: var(--card-bg);
             padding: 30px;
-            border-radius: 10px;
+            border-radius: 15px;
             box-shadow: var(--shadow);
-            margin-bottom: 30px;
+            transition: var(--transition);
         }
 
-        .testimonial-content {
-            position: relative;
+        .about-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .about-info {
+            grid-column: span 2;
+        }
+
+        .about-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .about-info p {
+            line-height: 1.8;
             margin-bottom: 20px;
         }
 
-        .testimonial-content p {
-            font-style: italic;
-            margin-bottom: 0;
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
         }
 
-        .testimonial-content::before {
+        .info-item {
+            padding: 15px;
+            background-color: var(--bg-color);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .info-item:hover {
+            transform: translateX(5px);
+        }
+
+        .info-item span {
+            font-weight: 600;
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Skills */
+        .skill-item {
+            margin-bottom: 25px;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .skill-percent {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background-color: var(--bg-color);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 5px;
+            width: 0;
+            transition: width 1.5s ease;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background-color: var(--primary-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 20px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -36px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            border: 3px solid var(--bg-color);
+        }
+
+        .timeline-date {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding-top: 80px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 24px;
+        }
+
+        .service-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        /* Portfolio Section */
+        .portfolio-section {
+            padding-top: 80px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .portfolio-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-card:hover .portfolio-image img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-content {
+            padding: 20px;
+        }
+
+        .portfolio-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .portfolio-content p {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        .portfolio-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .portfolio-link {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .portfolio-link:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding-top: 80px;
+        }
+
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .testimonial-text::before {
             content: '"';
-            font-size: 4rem;
+            font-size: 3rem;
             color: var(--primary-color);
             position: absolute;
-            top: -20px;
             left: -10px;
+            top: -20px;
             opacity: 0.3;
         }
 
         .testimonial-author {
             display: flex;
             align-items: center;
+            gap: 15px;
         }
 
-        .testimonial-author img {
+        .author-image {
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            margin-right: 15px;
+            overflow: hidden;
+        }
+
+        .author-image img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
         }
 
         .author-info h5 {
             margin-bottom: 5px;
+            color: var(--primary-color);
         }
 
         .author-info p {
-            margin-bottom: 0;
             font-size: 0.9rem;
-            color: #6b7280;
+            opacity: 0.8;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .home-img {
-                margin-top: 30px;
+        /* Contact Section */
+        .contact-section {
+            padding-top: 80px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-info {
+            display: grid;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .contact-form {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(236, 24, 57, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(30deg) scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .side-nav {
+                width: 60px;
             }
             
-            .my-profession {
+            .main-content {
+                margin-left: 60px;
+            }
+            
+            .home-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+            
+            .home-social {
+                justify-content: center;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .home-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
                 font-size: 2rem;
             }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .home-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-tooltip {
+                display: none;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 
-<body>
+<body class="dark-mode">
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
         <div class="loader"></div>
     </div>
 
-    <!-- === Main Container Start === -->
-    <div class="main-container">
-        <!-- === Aside Start === -->
-        <div class="aside">
-            <div class="logo">
-                <a href="#"><span>P</span>ortfolio</a>
+    <!-- Main Container -->
+    <div class="portfolio-container">
+        <!-- Side Navigation -->
+        <nav class="side-nav">
+            <div class="nav-logo">
+                <a href="#"><span>D</span>K</a>
             </div>
-            <div class="nav-toggler">
-                <span></span>
+            
+            <div class="nav-menu">
+                <div class="nav-item active" data-section="home">
+                    <div class="nav-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="nav-tooltip">Home</div>
+                </div>
+                
+                <div class="nav-item" data-section="about">
+                    <div class="nav-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="nav-tooltip">About</div>
+                </div>
+                
+                <div class="nav-item" data-section="services">
+                    <div class="nav-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <div class="nav-tooltip">Services</div>
+                </div>
+                
+                <div class="nav-item" data-section="portfolio">
+                    <div class="nav-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="nav-tooltip">Portfolio</div>
+                </div>
+                
+                <div class="nav-item" data-section="testimonials">
+                    <div class="nav-icon">
+                        <i class="fas fa-comment"></i>
+                    </div>
+                    <div class="nav-tooltip">Testimonials</div>
+                </div>
+                
+                <div class="nav-item" data-section="contact">
+                    <div class="nav-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="nav-tooltip">Contact</div>
+                </div>
             </div>
-            <ul class="nav">
-                <li><a href="#home" class="active"><i class="fa fa-home"></i>Home</a></li>
-                <li><a href="#about"><i class="fa fa-user"></i>About</a></li>
-                <li><a href="#services"><i class="fa fa-list"></i>Services</a></li>
-                <li><a href="#portfolio"><i class="fa fa-briefcase"></i>Portfolio</a></li>
-                <li><a href="#testimonials"><i class="fa fa-comment"></i>Testimonials</a></li>
-                <li><a href="#contact"><i class="fa fa-comments"></i>Contact</a></li>
-            </ul>
-        </div>
-        <!-- === Aside End === -->
+            
+            <div class="nav-bottom">
+                <div class="nav-item" id="themeToggle">
+                    <div class="nav-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <div class="nav-tooltip">Theme</div>
+                </div>
+            </div>
+        </nav>
 
-        <!-- === Main Content Start === -->
-        <div class="main-content">
-            <!-- === Home Section Start === -->
-            <section class="home section" id="home">
-                <div class="container">
-                    <div class="row">
-                        <div class="home-info padd-15">
-                            <h3 class="hello">Hello, my name is <span class="name">Durganand Thakur</span></h3>
-                            <h3 class="my-profession">I'm a <span class="typing">Laravel Developer</span></h3>
-                            <p>I build end-to-end web applications. I independently designed and developed a full CRM system,
-                                including an Admin panel and dynamic website, with dashboards, user roles, and API integrations using PHP, MySQL, Vite, and Tailwind CSS.</p>
-                            <a href="#contact" class="btn hire-me">Hire Me</a>
-                            <div class="social-links">
-                                <a href="https://github.com/dashboard"><i class="fab fa-github"></i></a>
-                                <a href="https://www.linkedin.com/in/durganand-kumar-thakur-818110254/"><i class="fab fa-linkedin"></i></a>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="https://www.instagram.com/durgan_thakur/"><i class="fab fa-instagram"></i></a>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Home Section -->
+            <section class="section home-section active" id="home">
+                <div class="section-container">
+                    <div class="home-content">
+                        <div class="home-text">
+                            <h1>
+                                Hello, I'm
+                                <span class="highlight">Durganand Thakur</span>
+                            </h1>
+                            <h2>Laravel Developer</h2>
+                            <p>
+                                I build end-to-end web applications. I independently designed and developed a full CRM system,
+                                including an Admin panel and dynamic website, with dashboards, user roles, and API integrations
+                                using PHP, MySQL, Vite, and Tailwind CSS.
+                            </p>
+                            <div class="home-buttons">
+                                <a href="#contact" class="btn btn-primary" data-section="contact">Hire Me</a>
+                                <a href="#" class="btn btn-secondary">Download CV</a>
+                            </div>
+                            <div class="home-social">
+                                <a href="https://github.com/dashboard" class="social-icon" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/durganand-kumar-thakur-818110254/" class="social-icon" target="_blank">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="#" class="social-icon" target="_blank">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://www.instagram.com/durgan_thakur/" class="social-icon" target="_blank">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
                             </div>
                         </div>
-                        <div class="home-img padd-15">
+                        <div class="home-image">
                             <img src="images/mine-1.jpg" alt="Durganand Kumar Thakur">
+                            <div class="image-frame"></div>
                         </div>
                     </div>
                 </div>
             </section>
-            <!-- === Home Section End === -->
 
-            <!-- === About Section Start === -->
-            <section class="about section" id="about">
-                <div class="container">
-                    <div class="row">
-                        <div class="section-title padd-15">
-                            <h2>About Me</h2>
+            <!-- About Section -->
+            <section class="section about-section" id="about">
+                <div class="section-container">
+                    <h2 class="section-title">About Me</h2>
+                    <div class="about-grid">
+                        <div class="about-card about-info">
+                            <h3>I'm <span style="color: var(--primary-color);">Durganand Kumar Thakur</span>, a Web & Laravel Developer</h3>
+                            <p>
+                                With hands-on experience in Laravel, PHP, MySQL, and Vite, I create full-stack web applications,
+                                dynamic websites, and Admin panels. I specialize in building scalable systems like CRMs,
+                                dashboards, and API integrations.
+                            </p>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <span>Birthday:</span> 15 April 1998
+                                </div>
+                                <div class="info-item">
+                                    <span>Age:</span> 27
+                                </div>
+                                <div class="info-item">
+                                    <span>Website:</span> www.durganand.com
+                                </div>
+                                <div class="info-item">
+                                    <span>Email:</span> durganandpatna6@gmail.com
+                                </div>
+                                <div class="info-item">
+                                    <span>Degree:</span> BCA
+                                </div>
+                                <div class="info-item">
+                                    <span>Phone:</span> +91 7321065905
+                                </div>
+                                <div class="info-item">
+                                    <span>City:</span> Noida
+                                </div>
+                                <div class="info-item">
+                                    <span>Freelance:</span> Available
+                                </div>
+                            </div>
+                            <div class="home-buttons">
+                                <a href="#contact" class="btn btn-primary" data-section="contact">Hire Me</a>
+                                <a href="#" class="btn btn-secondary">Download CV</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="about-content padd-15">
-                            <div class="row">
-                                <div class="about-text padd-15">
-                                    <h3>I'm <span>Durganand Kumar Thakur</span>, a Web & Laravel Developer</h3>
-                                    <p>With hands-on experience in Laravel, PHP, MySQL, and Vite, I create full-stack web applications, dynamic websites, and Admin panels.
-                                        I specialize in building scalable systems like CRMs, dashboards, and API integrations. I am proficient with front-end technologies like HTML, CSS, JavaScript, React,
-                                        and back-end development including database management, server-side logic, and secure authentication.
-                                    </p>
+                        
+                        <div class="about-card">
+                            <h3 style="color: var(--primary-color); margin-bottom: 30px;">Skills</h3>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>Laravel</span>
+                                    <span class="skill-percent">80%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" data-width="80"></div>
                                 </div>
                             </div>
-
-                            <div class="row">
-                                <div class="personal-info padd-15">
-                                    <div class="row">
-                                        <div class="info-item padd-15"><p>Birthday : <span>15 April 1998</span></p></div>
-                                        <div class="info-item padd-15"><p>Age : <span>27</span></p></div>
-                                        <div class="info-item padd-15"><p>Website : <span>www.durganand.com</span></p></div>
-                                        <div class="info-item padd-15"><p>Email : <span>durganandpatna6@gmail.com</span></p></div>
-                                        <div class="info-item padd-15"><p>Degree : <span>BCA</span></p></div>
-                                        <div class="info-item padd-15"><p>Phone : <span>+91 7321065905</span></p></div>
-                                        <div class="info-item padd-15"><p>City : <span>Noida</span></p></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="buttons padd-15">
-                                            <a href="#" class="btn">Download CV</a>
-                                            <a href="#contact" class="btn hire-me">Hire-Me</a>
-                                        </div>
-                                    </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>PHP</span>
+                                    <span class="skill-percent">75%</span>
                                 </div>
-
-                                <div class="skills padd-15">
-                                    <div class="row">
-                                        <div class="skill-item padd-15">
-                                            <h5>Laravel</h5>
-                                            <div class="progress">
-                                                <div class="progress-in" style="width: 80%;"></div>
-                                                <div class="skill-percent">80%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item padd-15">
-                                            <h5>PHP</h5>
-                                            <div class="progress">
-                                                <div class="progress-in" style="width: 75%;"></div>
-                                                <div class="skill-percent">75%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item padd-15">
-                                            <h5>MySQL</h5>
-                                            <div class="progress">
-                                                <div class="progress-in" style="width: 75%;"></div>
-                                                <div class="skill-percent">75%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item padd-15">
-                                            <h5>Vite</h5>
-                                            <div class="progress">
-                                                <div class="progress-in" style="width: 70%;"></div>
-                                                <div class="skill-percent">70%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item padd-15">
-                                            <h5>React JS</h5>
-                                            <div class="progress">
-                                                <div class="progress-in" style="width: 65%;"></div>
-                                                <div class="skill-percent">65%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item padd-15">
-                                            <h5>JavaScript</h5>
-                                            <div class="progress">
-                                                <div class="progress-in" style="width: 65%;"></div>
-                                                <div class="skill-percent">65%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item padd-15">
-                                            <h5>HTML & CSS</h5>
-                                            <div class="progress">
-                                                <div class="progress-in" style="width: 85%;"></div>
-                                                <div class="skill-percent">85%</div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="progress-bar">
+                                    <div class="progress" data-width="75"></div>
                                 </div>
                             </div>
-
-                            <!-- Experience Section -->
-                            <div class="row">
-                                <div class="experience padd-15">
-                                    <h3 class="title">Experience</h3>
-                                    <div class="row">
-                                        <div class="timeline-box padd-15">
-                                            <div class="timeline shadow-dark">
-                                                <!-- Timeline Item -->
-                                                <div class="timeline-item">
-                                                    <div class="circle-dot"></div>
-                                                    <h3 class="timeline-date">
-                                                        <i class="fa fa-calendar"></i> 2024 - Present
-                                                    </h3>
-                                                    <h4 class="timeline-title">Laravel Developer</h4>
-                                                    <p class="timeline-text">Developed full-stack web applications using Laravel, PHP, MySQL, and Vite. Built CRM systems, admin panels, and dynamic websites with user authentication and API integrations.</p>
-                                                </div>
-                                                <!-- Timeline Item -->
-                                                <div class="timeline-item">
-                                                    <div class="circle-dot"></div>
-                                                    <h3 class="timeline-date">
-                                                        <i class="fa fa-calendar"></i> 2023 - 2024
-                                                    </h3>
-                                                    <h4 class="timeline-title">PHP Developer</h4>
-                                                    <p class="timeline-text">Worked on various PHP projects, implementing backend functionality, database design, and server-side logic for web applications.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>MySQL</span>
+                                    <span class="skill-percent">75%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" data-width="75"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>Vite</span>
+                                    <span class="skill-percent">70%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" data-width="70"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span>React JS</span>
+                                    <span class="skill-percent">65%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" data-width="65"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="about-card">
+                            <h3 style="color: var(--primary-color); margin-bottom: 30px;">Experience</h3>
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-date">2024 - Present</div>
+                                    <div class="timeline-title">Laravel Developer</div>
+                                    <p>Developed full-stack web applications using Laravel, PHP, MySQL, and Vite.</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-date">2023 - 2024</div>
+                                    <div class="timeline-title">PHP Developer</div>
+                                    <p>Worked on various PHP projects implementing backend functionality.</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-date">2022 - 2023</div>
+                                    <div class="timeline-title">Web Developer</div>
+                                    <p>Developed responsive websites and web applications.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            <!-- === About Section End === -->
 
-            <!-- === Services Section Start === -->
-            <section class="service section" id="services">
-                <div class="container">
-                    <div class="row">
-                        <div class="section-title padd-15"><h2>Services</h2></div>
+            <!-- Services Section -->
+            <section class="section services-section" id="services">
+                <div class="section-container">
+                    <h2 class="section-title">My Services</h2>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h4>Full-Stack Development</h4>
+                            <p>Designing and developing complete web applications including CRM systems and Admin panels.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h4>Backend Development</h4>
+                            <p>Proficient in PHP, Laravel, MySQL, and API integration for scalable backend systems.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <h4>Frontend & UI Design</h4>
+                            <p>Creating responsive interfaces with HTML, CSS, JavaScript, React, and Tailwind CSS.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h4>API Development</h4>
+                            <p>Building RESTful APIs for seamless integration between frontend and backend.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <h4>Database Design</h4>
+                            <p>Creating efficient database schemas and optimizing queries for better performance.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h4>Responsive Design</h4>
+                            <p>Ensuring websites look great and function perfectly on all devices.</p>
+                        </div>
                     </div>
-                    <div class="row">
-                        <!-- Updated Services -->
-                        <div class="service-item padd-15" data-aos="fade-up" data-aos-delay="100">
-                            <div class="service-item-inner">
-                                <div class="icon"><i class="fa fa-code"></i></div>
-                                <h4>Full-Stack Development</h4>
-                                <p>Designing and developing complete web applications including CRM systems, Admin panels, and dynamic websites.</p>
+                </div>
+            </section>
+
+            <!-- Portfolio Section -->
+            <section class="section portfolio-section" id="portfolio">
+                <div class="section-container">
+                    <h2 class="section-title">My Portfolio</h2>
+                    <div class="portfolio-grid">
+                        <div class="portfolio-card">
+                            <div class="portfolio-image">
+                                <img src="images/mic-02.jpg" alt="E-Commerce Website">
+                            </div>
+                            <div class="portfolio-content">
+                                <h4>E-Commerce Website</h4>
+                                <p>Full-featured e-commerce platform with product management, shopping cart, and payment integration.</p>
+                                <div class="portfolio-links">
+                                    <a href="https://github.com/Durganandkumarthakur/E-CommerceWebsite" class="portfolio-link" target="_blank">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="portfolio-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                        <div class="service-item padd-15" data-aos="fade-up" data-aos-delay="200">
-                            <div class="service-item-inner">
-                                <div class="icon"><i class="fa fa-database"></i></div>
-                                <h4>Backend Development</h4>
-                                <p>Proficient in PHP, Laravel, MySQL, and API integration for scalable and efficient backend systems.</p>
+                        <div class="portfolio-card">
+                            <div class="portfolio-image">
+                                <img src="images/object detection.jpg" alt="Object Detection System">
+                            </div>
+                            <div class="portfolio-content">
+                                <h4>Object Detection System</h4>
+                                <p>AI-powered object detection system with real-time processing capabilities.</p>
+                                <div class="portfolio-links">
+                                    <a href="https://github.com/Durganandkumarthakur/ObjectDetectionSystem" class="portfolio-link" target="_blank">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="portfolio-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                        <div class="service-item padd-15" data-aos="fade-up" data-aos-delay="300">
-                            <div class="service-item-inner">
-                                <div class="icon"><i class="fa fa-palette"></i></div>
-                                <h4>Frontend & UI Design</h4>
-                                <p>Creating responsive and dynamic interfaces with HTML, CSS, JavaScript, React, and Tailwind CSS.</p>
+                        <div class="portfolio-card">
+                            <div class="portfolio-image">
+                                <img src="images/textutils.jpg" alt="TextUtils">
+                            </div>
+                            <div class="portfolio-content">
+                                <h4>TextUtils</h4>
+                                <p>Text manipulation tool with various utilities for formatting and analyzing text content.</p>
+                                <div class="portfolio-links">
+                                    <a href="https://github.com/Durganandkumarthakur/TextUtils" class="portfolio-link" target="_blank">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="portfolio-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                        <div class="service-item padd-15" data-aos="fade-up" data-aos-delay="400">
-                            <div class="service-item-inner">
-                                <div class="icon"><i class="fa fa-cogs"></i></div>
-                                <h4>API Development</h4>
-                                <p>Building RESTful APIs for seamless integration between frontend and backend systems.</p>
+                        <div class="portfolio-card">
+                            <div class="portfolio-image">
+                                <img src="images/crm.jpg" alt="CRM System">
+                            </div>
+                            <div class="portfolio-content">
+                                <h4>CRM System</h4>
+                                <p>Complete Customer Relationship Management system with user roles and dashboards.</p>
+                                <div class="portfolio-links">
+                                    <a href="#" class="portfolio-link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="portfolio-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                        <div class="service-item padd-15" data-aos="fade-up" data-aos-delay="500">
-                            <div class="service-item-inner">
-                                <div class="icon"><i class="fa fa-server"></i></div>
-                                <h4>Database Design</h4>
-                                <p>Creating efficient database schemas and optimizing queries for better performance.</p>
+                        <div class="portfolio-card">
+                            <div class="portfolio-image">
+                                <img src="images/admin_img.jpg" alt="Admin Panel">
+                            </div>
+                            <div class="portfolio-content">
+                                <h4>Admin Panel</h4>
+                                <p>Feature-rich admin dashboard for managing website content, users, and analytics.</p>
+                                <div class="portfolio-links">
+                                    <a href="#" class="portfolio-link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="portfolio-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                        <div class="service-item padd-15" data-aos="fade-up" data-aos-delay="600">
-                            <div class="service-item-inner">
-                                <div class="icon"><i class="fa fa-mobile-alt"></i></div>
-                                <h4>Responsive Design</h4>
-                                <p>Ensuring websites look great and function perfectly on all devices and screen sizes.</p>
+                        <div class="portfolio-card">
+                            <div class="portfolio-image">
+                                <img src="images/api_img.jpg" alt="API Integration">
+                            </div>
+                            <div class="portfolio-content">
+                                <h4>API Integration</h4>
+                                <p>Seamless integration of third-party APIs for enhanced functionality.</p>
+                                <div class="portfolio-links">
+                                    <a href="#" class="portfolio-link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="#" class="portfolio-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            <!-- === Services Section End === -->
 
-            <!-- === Portfolio Section Start === -->
-            <section class="portfolio section" id="portfolio">
-                <div class="container">
-                    <div class="row"><div class="section-title padd-15"><h2>Portfolio</h2></div></div>
-                    <div class="row"><div class="portfolio-heading padd-15"><h2>My Last Projects :</h2></div></div>
-                    <div class="row">
-                        <!-- Portfolio Items Updated -->
-                        <div class="portfolio-item padd-15" data-aos="fade-up" data-aos-delay="100">
-                            <div class="portfolio-item-inner shadow-dark">
-                                <div class="portfolio-img">
-                                    <img src="images/mic-02.jpg" alt="E-Commerce Website">
-                                </div>
-                                <div class="portfolio-overlay">
-                                    <h4>E-Commerce Website</h4>
-                                    <p>Full-featured e-commerce platform with product management, shopping cart, and payment integration.</p>
-                                    <div class="portfolio-links">
-                                        <a href="https://github.com/Durganandkumarthakur/E-CommerceWebsite" target="_blank"><i class="fab fa-github"></i></a>
-                                        <a href="#" target="_blank"><i class="fa fa-external-link-alt"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="portfolio-item padd-15" data-aos="fade-up" data-aos-delay="200">
-                            <div class="portfolio-item-inner shadow-dark">
-                                <div class="portfolio-img">
-                                    <img src="images/object detection.jpg" alt="Object Detection System">
-                                </div>
-                                <div class="portfolio-overlay">
-                                    <h4>Object Detection System</h4>
-                                    <p>AI-powered object detection system with real-time processing capabilities.</p>
-                                    <div class="portfolio-links">
-                                        <a href="https://github.com/Durganandkumarthakur/ObjectDetectionSystem" target="_blank"><i class="fab fa-github"></i></a>
-                                        <a href="#" target="_blank"><i class="fa fa-external-link-alt"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="portfolio-item padd-15" data-aos="fade-up" data-aos-delay="300">
-                            <div class="portfolio-item-inner shadow-dark">
-                                <div class="portfolio-img">
-                                    <img src="images/textutils.jpg" alt="TextUtils">
-                                </div>
-                                <div class="portfolio-overlay">
-                                    <h4>TextUtils</h4>
-                                    <p>Text manipulation tool with various utilities for formatting and analyzing text content.</p>
-                                    <div class="portfolio-links">
-                                        <a href="https://github.com/Durganandkumarthakur/TextUtils" target="_blank"><i class="fab fa-github"></i></a>
-                                        <a href="#" target="_blank"><i class="fa fa-external-link-alt"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="portfolio-item padd-15" data-aos="fade-up" data-aos-delay="400">
-                            <div class="portfolio-item-inner shadow-dark">
-                                <div class="portfolio-img">
-                                    <img src="images/crm.jpg" alt="CRM System">
-                                </div>
-                                <div class="portfolio-overlay">
-                                    <h4>CRM System</h4>
-                                    <p>Complete Customer Relationship Management system with user roles, dashboards, and reporting.</p>
-                                    <div class="portfolio-links">
-                                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                                        <a href="#" target="_blank"><i class="fa fa-external-link-alt"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="portfolio-item padd-15" data-aos="fade-up" data-aos-delay="500">
-                            <div class="portfolio-item-inner shadow-dark">
-                                <div class="portfolio-img">
-                                    <img src="images/admin_img.jpg" alt="Admin Panel">
-                                </div>
-                                <div class="portfolio-overlay">
-                                    <h4>Admin Panel</h4>
-                                    <p>Feature-rich admin dashboard for managing website content, users, and analytics.</p>
-                                    <div class="portfolio-links">
-                                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                                        <a href="#" target="_blank"><i class="fa fa-external-link-alt"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="portfolio-item padd-15" data-aos="fade-up" data-aos-delay="600">
-                            <div class="portfolio-item-inner shadow-dark">
-                                <div class="portfolio-img">
-                                    <img src="images/api_img.jpg" alt="API Integration">
-                                </div>
-                                <div class="portfolio-overlay">
-                                    <h4>API Integration</h4>
-                                    <p>Seamless integration of third-party APIs for enhanced functionality and data exchange.</p>
-                                    <div class="portfolio-links">
-                                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                                        <a href="#" target="_blank"><i class="fa fa-external-link-alt"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- === Portfolio Section End === -->
-
-            <!-- === Testimonials Section Start === -->
-            <section class="testimonials section" id="testimonials">
-                <div class="container">
-                    <div class="row">
-                        <div class="section-title padd-15">
-                            <h2>Testimonials</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="testimonial-item padd-15" data-aos="fade-up" data-aos-delay="100">
-                            <div class="testimonial-content">
-                                <p>Durganand developed a complete CRM system for our company that has significantly improved our workflow. His attention to detail and problem-solving skills are exceptional.</p>
+            <!-- Testimonials Section -->
+            <section class="section testimonials-section" id="testimonials">
+                <div class="section-container">
+                    <h2 class="section-title">Testimonials</h2>
+                    <div class="testimonials-slider">
+                        <div class="testimonial-card">
+                            <div class="testimonial-text">
+                                Durganand developed a complete CRM system for our company that has significantly improved our workflow. His attention to detail and problem-solving skills are exceptional.
                             </div>
                             <div class="testimonial-author">
-                                <img src="images/client1.jpg" alt="Client">
+                                <div class="author-image">
+                                    <img src="images/client1.jpg" alt="John Smith">
+                                </div>
                                 <div class="author-info">
                                     <h5>John Smith</h5>
                                     <p>CEO, Tech Solutions Inc.</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="testimonial-item padd-15" data-aos="fade-up" data-aos-delay="200">
-                            <div class="testimonial-content">
-                                <p>Working with Durganand was a great experience. He delivered our e-commerce platform on time and exceeded our expectations with his technical expertise.</p>
+                        <div class="testimonial-card">
+                            <div class="testimonial-text">
+                                Working with Durganand was a great experience. He delivered our e-commerce platform on time and exceeded our expectations with his technical expertise.
                             </div>
                             <div class="testimonial-author">
-                                <img src="images/client2.jpg" alt="Client">
+                                <div class="author-image">
+                                    <img src="images/client2.jpg" alt="Sarah Johnson">
+                                </div>
                                 <div class="author-info">
                                     <h5>Sarah Johnson</h5>
                                     <p>Marketing Director, RetailPro</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="testimonial-item padd-15" data-aos="fade-up" data-aos-delay="300">
-                            <div class="testimonial-content">
-                                <p>Durganand's Laravel skills are impressive. He built a complex admin panel for our application that is both user-friendly and highly functional.</p>
+                        <div class="testimonial-card">
+                            <div class="testimonial-text">
+                                Durganand's Laravel skills are impressive. He built a complex admin panel for our application that is both user-friendly and highly functional.
                             </div>
                             <div class="testimonial-author">
-                                <img src="images/client3.jpg" alt="Client">
+                                <div class="author-image">
+                                    <img src="images/client3.jpg" alt="Michael Brown">
+                                </div>
                                 <div class="author-info">
                                     <h5>Michael Brown</h5>
                                     <p>CTO, Startup Ventures</p>
@@ -912,104 +1345,80 @@ index.html
                     </div>
                 </div>
             </section>
-            <!-- === Testimonials Section End === -->
 
-            <!-- === Contact Section Start === -->
-            <section class="contact section" id="contact">
-                <div class="container">
-                    <div class="row">
-                        <div class="section-title padd-15">
-                            <h2>Contact Me</h2>
+            <!-- Contact Section -->
+            <section class="section contact-section" id="contact">
+                <div class="section-container">
+                    <h2 class="section-title">Contact Me</h2>
+                    <div class="contact-grid">
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h4>Call Me On</h4>
+                                    <p>+91 7321065905</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4>Location</h4>
+                                    <p>Noida, India</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4>Email</h4>
+                                    <p>durganandpatna6@gmail.com</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="contact-info-item padd-15" data-aos="fade-up" data-aos-delay="100">
-                            <div class="icon"><i class="fa fa-phone"></i></div>
-                            <h4>Call Me On</h4>
-                            <p>+91 7321065905</p>
-                        </div>
-                        <div class="contact-info-item padd-15" data-aos="fade-up" data-aos-delay="200">
-                            <div class="icon"><i class="fa fa-map-marker-alt"></i></div>
-                            <h4>Location</h4>
-                            <p>Noida, India</p>
-                        </div>
-                        <div class="contact-info-item padd-15" data-aos="fade-up" data-aos-delay="300">
-                            <div class="icon"><i class="fa fa-envelope"></i></div>
-                            <h4>Email</h4>
-                            <p>durganandpatna6@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="contact-form padd-15" data-aos="fade-up" data-aos-delay="400">
-                            <h3>Send Message</h3>
+                        <div class="contact-form">
+                            <h3 style="color: var(--primary-color); margin-bottom: 20px;">Send Message</h3>
                             <form id="contactForm">
-                                <div class="row">
-                                    <div class="form-group col-6 padd-15">
-                                        <input type="text" class="form-control" placeholder="Name" required>
-                                    </div>
-                                    <div class="form-group col-6 padd-15">
-                                        <input type="email" class="form-control" placeholder="Email" required>
-                                    </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Name" required>
                                 </div>
-                                <div class="row">
-                                    <div class="form-group col-12 padd-15">
-                                        <input type="text" class="form-control" placeholder="Subject" required>
-                                    </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Email" required>
                                 </div>
-                                <div class="row">
-                                    <div class="form-group col-12 padd-15">
-                                        <textarea class="form-control" placeholder="Your Message" required></textarea>
-                                    </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Subject" required>
                                 </div>
-                                <div class="row">
-                                    <div class="form-group col-12 padd-15">
-                                        <button type="submit" class="submit-btn">Send Message</button>
-                                    </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="Your Message" required></textarea>
                                 </div>
+                                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </section>
-            <!-- === Contact Section End === -->
-        </div>
-        <!-- === Main Content End === -->
+        </main>
     </div>
-    <!-- === Main Container End === -->
 
-    <!-- Dark Mode Toggle -->
-    <div class="dark-mode-toggle" id="darkModeToggle">
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle">
         <i class="fas fa-moon"></i>
-    </div>
+    </button>
 
-    <!-- Back to Top Button -->
-    <div class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
-    <!-- === Style Switcher & JS Files === -->
-    <div class="style-switcher">
-        <div class="style-switcher-toggler s-icon"><i class="fas fa-cog fa-spin"></i></div>
-        <div class="day-night s-icon"><i class="fas "></i></div>
-        <h4>Theme Colors</h4>
-        <div class="colors">
-            <span class="color-1" onclick="setActiveStyle('color-1')"></span>
-            <span class="color-2" onclick="setActiveStyle('color-2')"></span>
-            <span class="color-3" onclick="setActiveStyle('color-3')"></span>
-            <span class="color-4" onclick="setActiveStyle('color-4')"></span>
-            <span class="color-5" onclick="setActiveStyle('color-5')"></span>
-        </div>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js" referrerpolicy="no-referrer"></script>
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    
     <script>
-        // Initialize AOS (Animate On Scroll)
+        // Initialize AOS
         AOS.init({
-            duration: 1000,
+            duration: 800,
             easing: 'ease-in-out',
-            once: true,
-            mirror: false
+            once: true
         });
 
         // Loading Screen
@@ -1017,55 +1426,83 @@ index.html
             const loadingScreen = document.getElementById('loadingScreen');
             setTimeout(() => {
                 loadingScreen.classList.add('hidden');
-            }, 1000);
+            }, 800);
         });
 
-        // Dark Mode Toggle
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        const body = document.body;
-        
-        // Check for saved theme preference or respect OS preference
-        if (localStorage.getItem('theme') === 'dark' || 
-            (window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme'))) {
-            body.classList.add('dark-mode');
-            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-        }
-        
-        darkModeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            if (body.classList.contains('dark-mode')) {
-                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-                localStorage.setItem('theme', 'light');
-            }
-        });
-
-        // Back to Top Button
-        const backToTop = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('active');
-            } else {
-                backToTop.classList.remove('active');
-            }
-        });
-        
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+        // Section Navigation
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const sectionId = this.getAttribute('data-section');
+                
+                if (sectionId === 'theme') return;
+                
+                // Update active nav item
+                document.querySelectorAll('.nav-item').forEach(navItem => {
+                    navItem.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // Show selected section
+                document.querySelectorAll('.section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                const targetSection = document.getElementById(sectionId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                    
+                    // Animate skills when about section is shown
+                    if (sectionId === 'about') {
+                        animateSkills();
+                    }
+                }
             });
+        });
+
+        // Hire Me buttons navigation
+        document.querySelectorAll('[data-section]').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (this.hash === '#contact') {
+                    e.preventDefault();
+                    const sectionId = this.getAttribute('data-section');
+                    
+                    document.querySelectorAll('.nav-item').forEach(navItem => {
+                        navItem.classList.remove('active');
+                    });
+                    
+                    document.querySelector(`.nav-item[data-section="${sectionId}"]`).classList.add('active');
+                    
+                    document.querySelectorAll('.section').forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    
+                    document.getElementById(sectionId).classList.add('active');
+                }
+            });
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            const icon = themeToggle.querySelector('i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
         });
 
         // Typing Effect
         document.addEventListener('DOMContentLoaded', function() {
             const typed = new Typed('.typing', {
                 strings: ['Laravel Developer', 'PHP Developer', 'Full Stack Developer', 'Web Developer'],
-                typeSpeed: 100,
-                backSpeed: 60,
+                typeSpeed: 80,
+                backSpeed: 50,
+                backDelay: 1500,
                 loop: true
             });
         });
@@ -1073,39 +1510,102 @@ index.html
         // Contact Form Submission
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            // Here you would typically send the form data to a server
             alert('Thank you for your message! I will get back to you soon.');
             this.reset();
         });
 
-        // Skill Animation on Scroll
-        const skillItems = document.querySelectorAll('.skill-item');
-        
-        const animateSkills = () => {
-            skillItems.forEach(item => {
-                const progressIn = item.querySelector('.progress-in');
-                const percent = item.querySelector('.skill-percent').textContent;
-                progressIn.style.width = '0%';
+        // Animate Skills
+        function animateSkills() {
+            document.querySelectorAll('.progress').forEach(progress => {
+                const width = progress.getAttribute('data-width') + '%';
+                progress.style.width = '0%';
                 
                 setTimeout(() => {
-                    progressIn.style.width = percent;
-                }, 500);
+                    progress.style.width = width;
+                }, 300);
             });
-        };
-        
-        // Use Intersection Observer to trigger skill animation when in view
+        }
+
+        // Initialize skills animation when about section loads
+        const aboutSection = document.getElementById('about');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     animateSkills();
-                    observer.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.5 });
-        
-        observer.observe(document.querySelector('.skills'));
+
+        observer.observe(aboutSection);
+
+        // Image fallback
+        document.querySelectorAll('img').forEach(img => {
+            img.onerror = function() {
+                const placeholder = 'https://via.placeholder.com/400x300/1e293b/94a3b8?text=Project+Image';
+                if (this.src !== placeholder) {
+                    this.src = placeholder;
+                }
+            };
+        });
+
+        // Add hover effect to portfolio cards
+        document.querySelectorAll('.portfolio-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Add click animation to buttons
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                // Add ripple effect
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.7);
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    width: ${size}px;
+                    height: ${size}px;
+                    top: ${y}px;
+                    left: ${x}px;
+                `;
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add CSS for ripple effect
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+            
+            .btn {
+                position: relative;
+                overflow: hidden;
+            }
+        `;
+        document.head.appendChild(style);
     </script>
-    <script src="js/script.js"></script>
-    <script src="js/style-switcher.js"></script>
 </body>
+
 </html>
