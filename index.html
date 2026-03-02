@@ -1,552 +1,494 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE-edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <!-- ===== CSS Files ===== -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/skins/color-1.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- === Style Switcher === -->
-    <link rel="stylesheet" href="css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
-    <link rel="stylesheet" href="css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
-    <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
-    <link rel="stylesheet" href="css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
-    <link rel="stylesheet" href="css/skins/color-5.css" class="alternate-style" title="color-5" disabled>
-    <link rel="stylesheet" href="css/style-switcher.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Durganand Kumar Thakur · Laravel Developer</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts: Inter + space for monospace -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafc;
+      color: #1e293b;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    /* navbar */
+    .navbar {
+      background-color: #ffffffdd;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid #eef2f6;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(145deg, #0f2b3d, #2563eb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      font-weight: 500;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #334155;
+      transition: color 0.2s;
+      font-size: 1rem;
+    }
+    .nav-links a:hover {
+      color: #2563eb;
+    }
+    /* buttons & sections */
+    .btn {
+      display: inline-block;
+      background: white;
+      padding: 0.6rem 1.4rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.95rem;
+      border: 1px solid #e2e8f0;
+      color: #1e293b;
+      transition: all 0.2s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .btn-primary {
+      background: #1e293b;
+      color: white;
+      border: none;
+      box-shadow: 0 8px 18px -6px #1e293b60;
+    }
+    .btn-primary:hover {
+      background: #0f172a;
+    }
+    .btn-outline:hover {
+      background: #f8fafc;
+      border-color: #94a3b8;
+    }
+    section {
+      padding: 5rem 0;
+      border-bottom: 1px solid #edf2f7;
+    }
+    section:last-child {
+      border-bottom: none;
+    }
+    .badge {
+      background: #e6f0ff;
+      color: #1e4bd2;
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      display: inline-block;
+      margin-bottom: 1rem;
+      letter-spacing: 0.3px;
+    }
+    h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    h2 i {
+      color: #2563eb;
+      margin-right: 10px;
+      font-size: 2rem;
+    }
+    .grid-2, .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 800px) {
+      .grid-2, .projects-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+    /* cards */
+    .project-card {
+      background: white;
+      border-radius: 28px;
+      padding: 1.8rem;
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.05);
+      border: 1px solid #ffffff50;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 40px -16px rgba(37,99,235,0.15);
+    }
+    .project-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .project-title i {
+      color: #2563eb;
+      font-size: 1.8rem;
+    }
+    .project-sub {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #2563eb;
+      margin: 1rem 0 0.5rem;
+      border-left: 4px solid #2563eb;
+      padding-left: 0.7rem;
+    }
+    .feature-list {
+      list-style: none;
+      margin: 0.5rem 0 1rem;
+    }
+    .feature-list li {
+      margin-bottom: 0.4rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+    }
+    .feature-list i {
+      color: #2563eb;
+      font-size: 0.9rem;
+      margin-top: 0.2rem;
+      min-width: 1.2rem;
+    }
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1.2rem 0 1rem;
+    }
+    .tech-tags span {
+      background: #eef2ff;
+      color: #1e3a8a;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+    }
+    .role {
+      background: #f1f5f9;
+      padding: 0.8rem 1rem;
+      border-radius: 18px;
+      font-size: 0.9rem;
+      border-left: 3px solid #0f2b3d;
+    }
+    .skill-blocks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin-top: 2rem;
+    }
+    .skill-cat {
+      background: white;
+      border-radius: 26px;
+      padding: 1.6rem 2rem;
+      box-shadow: 0 6px 18px #e2e8f0;
+      flex: 1 1 200px;
+    }
+    .skill-cat h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .skill-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+    .skill-items span {
+      background: #f1f4f9;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .about-text {
+      font-size: 1.15rem;
+      max-width: 780px;
+      background: white;
+      padding: 2.2rem 2.8rem;
+      border-radius: 40px;
+      box-shadow: 0 20px 30px -10px rgba(0,0,0,0.02);
+      border: 1px solid #f0f4fe;
+    }
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin: 2.5rem 0 0;
+    }
+    .contact-item {
+      background: white;
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      font-weight: 500;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.02);
+      border: 1px solid #e9edf3;
+    }
+    .contact-item i {
+      margin-right: 0.5rem;
+      color: #2563eb;
+    }
+    footer {
+      text-align: center;
+      padding: 2.5rem 0;
+      color: #64748b;
+      border-top: 1px solid #e2e8f0;
+    }
+  </style>
 </head>
-
 <body>
-    <!-- === Main Container Start === -->
-    <div class="main-container">
-        <!-- === Aside Start === -->
-        <div class="aside">
-            <div class="logo">
-                <a href="#"><span>P</span>ortfolio</a>
-            </div>
-            <div class="nav-toggler">
-                <span></span>
-            </div>
-            <ul class="nav">
-                <li><a href="#home" class="active"><i class="fa fa-home"></i>Home</a></li>
-                <li><a href="#about" class="active"><i class="fa fa-user"></i>About</a></li>
-                <li><a href="#services" class="active"><i class="fa fa-list"></i>Services</a></li>
-                <li><a href="#portfolio" class="active"><i class="fa fa-briefcase"></i>Portfolio</a></li>
-                <li><a href="#contact" class="active"><i class="fa fa-comments"></i>Contact</a></li>
-            </ul>
-        </div>
-        <!-- === Aside End === -->
-        <!-- === Main Content Start === -->
-        <div class="main-content">
-            <!-- === Home Section Start === -->
-            <section class="home section" id="home">
-                <div class="container">
-                    <div class="row">
-                        <div class="home-info padd-15">
-                            <h3 class="hello">Hello my name is <span class="name">Durganand Kumar Thakur</span></h3>
-                            <h3 class="my-profession">I'm a <span class="typing">Web Designer</span></h3>
-                            <p>I'm a web developer Completed my Degree. I have knowledge and experience in various programming languages and technologies. In terms of web development, I am proficient in HTML, CSS, and JavaScript. I also have
-                                experience in back-end development using PHP and Mysql, as well as working with React and Node.js. Additionally concepts of frameworks. Currently, I am focusing on expanding my
-                                skills in Node.js. My expertise is to create and website design and many more...</p>
-                            <a href="#contact" class="btn hire-me">Hire Me</a>
-                        </div>
-                        <div class="home-img padd-15">
-                            <img src="images/mine-1.jpg" alt="">
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- === Home Section End === -->
-            <!-- === About Section Start === -->
-            <section class="about section" id="about">
-                <div class="container">
-                    <div class="row">
-                        <div class="section-title padd-15">
-                            <h2>About Me</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="about-content padd-15">
-                            <div class="row">
-                                <div class="about-text padd-15">
-                                    <h3>I'm Durganand Kumar Thakur and <span>Web Developer</span></h3>
-                                    <p>A web developer completed my Degree. I possess a wide range of knowledge and experience in various programming languages and technologies. Specifically, in the field of web development, I am proficient
-                                        in HTML, CSS, and JavaScript. I also have hands-on experience in back-end development using PHP and Java. In addition to web development frameworks.
-                                        Moreover, I am proficient in React and Node.js, a popular web development framework. Furthermore, I am well-versed in utilizing development tools such as VS code and Eclipse, which are widely used in the industry.
-                                        These tools aid in efficient coding and provide useful features for software development.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="personal-info padd-15">
-                                    <div class="row">
-                                        <div class="info-item padd-15">
-                                            <p>Birtday : <span>15 April 1998</span></p>
-                                        </div>
-                                        <div class="info-item padd-15">
-                                            <p>Age : <span>26</span></p>
-                                        </div>
-                                        <div class="info-item padd-15">
-                                            <p>Website : <span>www.durganand.com</span></p>
-                                        </div>
-                                        <div class="info-item padd-15">
-                                            <p>Email : <span>durganandpatna6@gmail.com</span></p>
-                                        </div>
-                                        <div class="info-item padd-15">
-                                            <p>Degree : <span>BCA</span></p>
-                                        </div>
-                                        <div class="info-item padd-15">
-                                            <p>Phone : <span>+91 7321065905</span></p>
-                                        </div>
-                                        <div class="info-item padd-15">
-                                            <p>City : <span>Gurgaon</span></p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="buttons padd-15">
-                                            <a href="#" class="btn">Download CV</a>
-                                            <a href="#contact" class="btn hire-me">Hire-Me</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="skills padd-15">
-                                    <div class="row">
-                                        <div class="skill-item padd-15">
-                                            <h5>Java</h5>
-                                            <div class="progress">
-                                                <div class="progress-in" style="width: 76%;"></div>
-                                                <div class="skill-percent">65%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item padd-15">
-                                            <h5>PHP</h5>
-                                            <div class="progress">
-                                                <div class="progress-in" style="width: 76%;"></div>
-                                                <div class="skill-percent">60%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item padd-15">
-                                            <h5>Html</h5>
-                                            <div class="progress">
-                                                <div class="progress-in" style="width: 86%;"></div>
-                                                <div class="skill-percent">86%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item padd-15">
-                                            <h5>Css</h5>
-                                            <div class="progress">
-                                                <div class="progress-in" style="width: 86%;"></div>
-                                                <div class="skill-percent">86%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item padd-15">
-                                            <h5>Javascript</h5>
-                                            <div class="progress">
-                                                <div class="progress-in" style="width: 65%;"></div>
-                                                <div class="skill-percent">65%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item padd-15">
-                                            <h5>React Js</h5>
-                                            <div class="progress">
-                                                <div class="progress-in" style="width: 65%;"></div>
-                                                <div class="skill-percent">65%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item padd-15">
-                                            <h5>MongoDB</h5>
-                                            <div class="progress">
-                                                <div class="progress-in" style="width: 65%;"></div>
-                                                <div class="skill-percent">70%</div>
-                                            </div>
-                                        </div>
-                                        <div class="skill-item padd-15">
-                                            <h5>MySql</h5>
-                                            <div class="progress">
-                                                <div class="progress-in" style="width: 65%;"></div>
-                                                <div class="skill-percent">75%</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="education padd-15">
-                                    <h3 class="title">Education</h3>
-                                    <div class="row">
-                                        <div class="timeline-box padd-15">
-                                            <div class="timeline shadow-dark">
-                                                <!-- === timeline item === -->
-                                                <div class="timeline-item">
-                                                    <div class="circle-dot"></div>
-                                                    <h3 class="timeline-date">
-                                                        <i class="fa fa-calendar"></i> 2020 -2021
-                                                    </h3>
-                                                    <h3 class="timeline-title">Bachelor of Computer Application</h3>
-                                                    <p class="timeline-text">
-                                                        <h4> Year 1: Foundation and Basics </h4>
-                                                        <ul style="list-style-type:disc">
-                                                            <li>Introduction to CA: Basic courses covering the fundamental concepts of information technology, including programming languages, algorithms, and data structures.</li>
-                                                            <li>Mathematics and Physics: Core courses in mathematics and physics to build a strong foundation for technical understanding.</li>
-                                                            <li>General Engineering Courses: Introduction to various engineering subject like communication skills.</li>
-                                                        </ul>
-                                                    </p>
-                                                </div>
-                                                <!-- === timeline item === -->
-                                                <div class="timeline-item">
-                                                    <div class="circle-dot"></div>
-                                                    <h3 class="timeline-date">
-                                                        <i class="fa fa-calendar"></i> 2021 -2022
-                                                    </h3>
-                                                    <h3 class="timeline-title">Bachelor of Computer Application</h3>
-                                                    <p class="timeline-text">
-                                                        <h4> Year 2: Core IT Subjects </h4>
-                                                        <ul style="list-style-type:disc">
-                                                            <li>Programming Languages: In-depth study of programming languages such as OOP's concepts in Java and Advanced PHP.</li>
-                                                            <li>Database Management Systems (DBMS): Understanding the principles of organizing, storing, and managing data.</li>
-                                                            <li>Data Structures and Algorithms: Advanced study of algorithms and data structures for efficient problem-solving.</li>
-                                                            <li>Operating Systems: Introduction to the principles and architecture of operating systems.</li>
-                                                            <li>Networking Basics: Basic understanding of computer networks and communication protocols.</li>
-                                                        </ul>
-                                                    </p>
-                                                </div>
-                                                <!-- === timeline item === -->
-                                                <div class="timeline-item">
-                                                    <div class="circle-dot"></div>
-                                                    <h3 class="timeline-date">
-                                                        <i class="fa fa-calendar"></i> 2022 -2023
-                                                    </h3>
-                                                    <h3 class="timeline-title">Bachelor of Computer Application</h3>
-                                                    <p class="timeline-text">
-                                                        <h4> Year 3: Specialization and Electives </h4>
-                                                        <ul style="list-style-type:disc">
-                                                            <li>Software Engineering: Principles of software development, project management, and version control.</li>
-                                                            <li>Web Technologies: In-depth study of web development, including HTML, CSS, JavaScript, and web frameworks.</li>
-                                                            <li>Cybersecurity: Introduction to cybersecurity concepts, ethical hacking, and security protocols.</li>
-                                                            <li>Electives: Choose specific courses based on personal interests, such as mobile app development, artificial intelligence, or machine learning.</li>
-                                                            <li>Internship/Industrial Training</li>
-                                                        </ul>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="experience padd-15">
-                                    <h3 class="title">Experience</h3>
-                                    <div class="row">
-                                        <div class="timeline-box padd-15">
-                                            <div class="timeline shadow-dark">
-                                                <!-- === timeline item === -->
-                                                <div class="timeline-item">
-                                                    <div class="circle-dot"></div>
-                                                    <h3 class="timeline-date">
-                                                        <i class="fa fa-calendar"></i> 2020 -2023
-                                                    </h3>
-                                                    <h4 class="timeline-title">Bachelor of Computer Application</h4>
-                                                    <p class="timeline-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus reprehenderit ipsam vero soluta sit dignissimos ad laboriosam sint similique esse, in nisi eius at consectetur exercitationem incidunt!
-                                                        Minima facilis molestiae quisquam, ad magni perspiciatis hic nostrum ullam, nisi at dignissimos eos officia odit obcaecati ipsam? Quasi nesciunt quas culpa quos nobis expedita, officiis labore quae
-                                                        odio rerum explicabo ullam cupiditate! Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, atque!</p>
-                                                </div>
-                                                <!-- === timeline item === -->
-                                                <div class="timeline-item">
-                                                    <div class="circle-dot"></div>
-                                                    <h3 class="timeline-date">
-                                                        <i class="fa fa-calendar"></i> 2020 -2023
-                                                    </h3>
-                                                    <h4 class="timeline-title">Bachelor of Computer Application</h4>
-                                                    <p class="timeline-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat excepturi dicta vitae repudiandae enim labore soluta sit tempora dignissimos corrupti! Atque et officia placeat laboriosam. Ex, recusandae
-                                                        quos! Molestiae eius sapiente pariatur quisquam totam doloribus aut qui aperiam repellendus eveniet nemo ea eaque possimus quaerat nam porro perferendis consequatur nobis amet voluptas consequuntur
-                                                        quasi, illo laboriosam. Ipsam voluptates distinctio eos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam vel cumque pariatur placeat. Excepturi, neque.</p>
-                                                </div>
-                                                <!-- === timeline item === -->
-                                                <div class="timeline-item">
-                                                    <div class="circle-dot"></div>
-                                                    <h3 class="timeline-date">
-                                                        <i class="fa fa-calendar"></i> 2020 -2023
-                                                    </h3>
-                                                    <h4 class="timeline-title">Bachelor of Computer Application</h4>
-                                                    <p class="timeline-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni dolorem distinctio facere quasi quod commodi nihil, omnis vitae deserunt saepe exercitationem delectus dolore repellat, voluptatibus fuga
-                                                        minus voluptates fugit nesciunt ab in doloribus! Porro laborum assumenda blanditiis incidunt obcaecati eum nostrum amet repellendus accusantium quaerat nemo voluptatem, aut deserunt culpa. Similique
-                                                        adipisci dolorum repellat alias blanditiis, dolore pariatur porro deserunt! Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quam culpa deserunt laudantium praesentium maxime minus
-                                                        consequatur molestias, minima laboriosam!</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- === About Section End === -->
-            <!-- === Services Section Start === -->
-            <section class="service section" id="services">
-                <div class="container">
-                    <div class="row">
-                        <div class="section-title padd-15">
-                            <h2>Services</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <!-- === Services item Start === -->
-                        <div class="service-item padd-15">
-                            <div class="service-item-inner">
-                                <div class="icon">
-                                    <i class="fa fa-mobile-alt"></i>
-                                </div>
-                                <h4>Web Design</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit aspernatur at provident ad, consequatur ex officiis quae, corporis quasi soluta optio explicabo doloremque placeat eius.</p>
-                            </div>
-                        </div>
-                        <!-- === Services item End === -->
-                        <!-- === Services item Start === -->
-                        <div class="service-item padd-15">
-                            <div class="service-item-inner">
-                                <div class="icon">
-                                    <i class="fa fa-laptop-code"></i>
-                                </div>
-                                <h4>Web Design</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit aspernatur at provident ad, consequatur ex officiis quae, corporis quasi soluta optio explicabo doloremque placeat eius.</p>
-                            </div>
-                        </div>
-                        <!-- === Services item End === -->
-                        <!-- === Services item Start === -->
-                        <div class="service-item padd-15">
-                            <div class="service-item-inner">
-                                <div class="icon">
-                                    <i class="fa fa-palette"></i>
-                                </div>
-                                <h4>Web Design</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit aspernatur at provident ad, consequatur ex officiis quae, corporis quasi soluta optio explicabo doloremque placeat eius.</p>
-                            </div>
-                        </div>
-                        <!-- === Services item End === -->
-                        <!-- === Services item Start === -->
-                        <div class="service-item padd-15">
-                            <div class="service-item-inner">
-                                <div class="icon">
-                                    <i class="fa fa-code"></i>
-                                </div>
-                                <h4>Web Design</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit aspernatur at provident ad, consequatur ex officiis quae, corporis quasi soluta optio explicabo doloremque placeat eius.</p>
-                            </div>
-                        </div>
-                        <!-- === Services item End === -->
-                        <!-- === Services item Start === -->
-                        <div class="service-item padd-15">
-                            <div class="service-item-inner">
-                                <div class="icon">
-                                    <i class="fa fa-search"></i>
-                                </div>
-                                <h4>Web Design</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit aspernatur at provident ad, consequatur ex officiis quae, corporis quasi soluta optio explicabo doloremque placeat eius.</p>
-                            </div>
-                        </div>
-                        <!-- === Services item End === -->
-                        <!-- === Services item Start === -->
-                        <div class="service-item padd-15">
-                            <div class="service-item-inner">
-                                <div class="icon">
-                                    <i class="fa fa-bullhorn"></i>
-                                </div>
-                                <h4>Web Design</h4>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit aspernatur at provident ad, consequatur ex officiis quae, corporis quasi soluta optio explicabo doloremque placeat eius.</p>
-                            </div>
-                        </div>
-                        <!-- === Services item End === -->
-                    </div>
-                </div>
-            </section>
-            <!-- === Services Section End === -->
-            <!-- === Portfolio Section Start === -->
-            <section class="portfolio section" id="portfolio">
-                <div class="container">
-                    <div class="row">
-                        <div class="section-title padd-15">
-                            <h2>Portfolio</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="portfolio-heading padd-15">
-                            <h2>My Last Project :</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <!-- === Portfolio item start === -->
-                        <div class="portfolio-item padd-15">
-                            <div class="portfolio-item-inner shadow-dark">
-                                <div class="portfolio-img">
-                                    <a href="https://github.com/ @Durganandkumarthakur/E-CommerceWebsite">
-                                        <img src="images/mic-02.jpg" alt="E-Commerce Website">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- === Portfolio item End === -->
-                        <!-- === Portfolio item start === -->
-                        <div class="portfolio-item padd-15">
-                            <div class="portfolio-item-inner shadow-dark">
-                                <div class="portfolio-img">
-                                    <a href="https://github.com/ @Durganandkumarthakur/ObjectDetectionSystem">
-                                        <img src="images/object detection.jpg" alt="Object Detection System">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- === Portfolio item End === -->
-                        <!-- === Portfolio item start === -->
-                        <div class="portfolio-item padd-15">
-                            <div class="portfolio-item-inner shadow-dark">
-                                <div class="portfolio-img">
-                                    <a href="https://github.com/ @Durganandkumarthakur/TextUtils">
-                                        <img src="images/textutils.jpg" alt="TexUtils">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- === Portfolio item End === -->
-                        <!-- === Portfolio item start === -->
-                        <div class="portfolio-item padd-15">
-                            <div class="portfolio-item-inner shadow-dark">
-                                <div class="portfolio-img">
-                                    <a href="#">
-                                        <img src="images/portfolio-2.jpeg" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- === Portfolio item End === -->
-                        <!-- === Portfolio item start === -->
-                        <div class="portfolio-item padd-15">
-                            <div class="portfolio-item-inner shadow-dark">
-                                <div class="portfolio-img">
-                                    <a href="#">
-                                        <img src="images/portfolio-3.jpeg" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- === Portfolio item End === -->
-                        <!-- === Portfolio item start === -->
-                        <div class="portfolio-item padd-15">
-                            <div class="portfolio-item-inner shadow-dark">
-                                <div class="portfolio-img">
-                                    <a href="#">
-                                        <img src="images/portfolio-6.jpeg" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- === Portfolio item End === -->
-                    </div>
-                </div>
-            </section>
-            <!-- === Portfolio Section End === -->
-            <!-- === Contact Section Start === -->
-            <section class="contact section" id="contact">
-                <div class="container">
-                    <div class="row">
-                        <div class="section-title padd-15">
-                            <h2>Contact Me</h2>
-                        </div>
-                    </div>
-                    <h3 class="contact-title padd-15">Have You Any Quistion ?</h3>
-                    <h4 class="contact-sub-title padd-15">I'M AT YOUR SERVICES</h4>
-                    <div class="row">
-                        <!-- === Contact info item Start === -->
-                        <div class="contact-info-item padd-15">
-                            <div class="icon"><i class="fa fa-phone"></i></div>
-                            <h4>Call Us On</h4>
-                            <p>+91 7321065905</p>
-                        </div>
-                        <!-- === Contact info item End === -->
-                        <!-- === Contact info item Start === -->
-                        <div class="contact-info-item padd-15">
-                            <div class="icon"><i class="fa fa-envelope"></i></div>
-                            <h4>Email</h4>
-                            <p>durganandpatna6@gmail.com</p>
-                        </div>
-                        <!-- === Contact info item End === -->
-                        <!-- === Contact info item Start === -->
-                        <div class="contact-info-item padd-15">
-                            <div class="icon"><i class="fa fa-globe-europe"></i></div>
-                            <h4>Website</h4>
-                            <p>www.durganand.com</p>
-                        </div>
-                        <!-- === Contact info item End === -->
-                    </div>
-                    <h3 class="contact-title padd-15">SEND ME AN EMAIL</h3>
-                    <h4 class="contact-sub-title padd-15">I'M VERY RESPONSIVE TO MESSAGES</h4>
-                    <!-- ==== Contact Form ==== -->
-                    <div class="row">
-                        <div class="contact-form padd-15">
-                            <div class="row">
-                                <div class="form-item col-6 padd-15">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Name">
-                                    </div>
-                                </div>
-                                <div class="form-item col-6 padd-15">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Email">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-item col-12 padd-15">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Subject">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-item col-12 padd-15">
-                                    <div class="form-group">
-                                        <textarea name="" class="form-control" id="" placeholder="Message"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-item col-12 padd-15">
-                                    <button type="submit" class="btn">Send Message</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- === Contact Section End === -->
-        </div>
-        <!-- === Main Content End === -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <span class="logo"><i class="fas fa-laravel" style="color:#f05340; margin-right:8px;"></i>Durganand.dev</span>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a href="#contact" class="btn btn-primary" style="padding:0.5rem 1.6rem;"><i class="far fa-paper-plane"></i> Hire</a>
     </div>
-    <!-- === Main Container End === -->
-    <!-- === Style Switcher Start === -->
-    <div class="style-switcher">
-        <div class="style-switcher-toggler s-icon">
-            <i class="fas fa-cog fa-spin"></i>
-        </div>
-        <div class="day-night s-icon">
-            <i class="fas "></i>
-        </div>
-        <h4>Theme Colors</h4>
-        <div class="colors">
-            <span class="color-1" onclick="setActiveStyle('color-1')"></span>
-            <span class="color-2" onclick="setActiveStyle('color-2')"></span>
-            <span class="color-3" onclick="setActiveStyle('color-3')"></span>
-            <span class="color-4" onclick="setActiveStyle('color-4')"></span>
-            <span class="color-5" onclick="setActiveStyle('color-5')"></span>
-        </div>
-    </div>
-    <!-- === Style Switcher End === -->
-    <!-- ==== JS Files ==== -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js" referrerpolicy="no-referrer"></script>
-    <script src="js/script.js"></script>
-    <script src="js/style-switcher.js"></script>
-</body>
+  </nav>
 
+  <!-- HERO / HOME -->
+  <section id="home" style="padding-top: 3rem; padding-bottom: 2rem;">
+    <div class="container" style="display: flex; flex-wrap: wrap; align-items: center; gap: 3rem;">
+      <div style="flex: 1 1 300px;">
+        <span class="badge"><i class="fas fa-code"></i> Laravel Developer · 1 year exp</span>
+        <h1 style="font-size: 3.2rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em;">Durganand Kumar Thakur</h1>
+        <p style="font-size: 1.3rem; color: #334155; margin: 1.2rem 0 1.8rem;">I build secure, scalable web apps — ERP, CRM, e‑commerce.</p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="#projects" class="btn btn-primary"><i class="fas fa-arrow-down"></i> View projects</a>
+          <a href="#contact" class="btn btn-outline"><i class="fas fa-comment"></i> Let's talk</a>
+        </div>
+        <div style="margin-top: 2.5rem; display: flex; gap: 2rem; color: #2563eb;">
+          <span><i class="fab fa-github"></i> github/durganand-dev</span>
+          <span><i class="fab fa-linkedin"></i> linkedin/in/durganand</span>
+        </div>
+      </div>
+      <div style="flex: 0 0 180px;">
+        <!-- abstract avatar / placeholder: monogram -->
+        <div style="width: 180px; height: 180px; background: linear-gradient(145deg, #1e293b, #2563eb); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 4rem; box-shadow: 0 30px 30px -10px #1e293b80;">DK</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <div class="container">
+      <div class="badge"><i class="far fa-user"></i> profile</div>
+      <h2><i class="fas fa-address-card"></i> About me</h2>
+      <div class="about-text">
+        <p style="margin-bottom: 1.2rem;">I am <strong>Durganand Kumar Thakur</strong>, a passionate Laravel Developer with 1 year of professional experience. I hold a BCA and also pursued two years of BSc in Mathematics, which strengthened my logical thinking and problem‑solving abilities.</p>
+        <p>I have worked on various real‑world projects including <strong>ERP systems, Admin Panels, CRM, and E‑commerce</strong>. My strong interest lies in building secure, scalable, and user‑friendly web applications. I specialize in backend development with Laravel & PHP, while also having solid frontend knowledge. My goal is to grow as a full‑stack developer and contribute to impactful software solutions.</p>
+        <div style="margin-top: 1.8rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+          <span><i class="fas fa-graduation-cap" style="color:#2563eb;"></i> BCA · BSc (Maths) 2 yrs</span>
+          <span><i class="fas fa-map-pin" style="color:#2563eb;"></i> based in India</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS (DETAILED)  with exactly 4 projects as given -->
+  <section id="projects">
+    <div class="container">
+      <div class="badge"><i class="fas fa-laptop-code"></i> portfolio</div>
+      <h2><i class="fas fa-diagram-project"></i> real‑world projects</h2>
+      <div class="projects-grid">
+        
+        <!-- 1. ERP System -->
+        <div class="project-card">
+          <div class="project-title"><i class="fas fa-building"></i> ERP Management System</div>
+          <p style="color:#334155;"><strong>Enterprise Resource Planning</strong> – complete company operations suite.</p>
+          <div class="project-sub">✨ key features</div>
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> Employee, attendance & payroll</li>
+            <li><i class="fas fa-check-circle"></i> Inventory & reporting modules</li>
+            <li><i class="fas fa-check-circle"></i> Role‑based authentication</li>
+            <li><i class="fas fa-check-circle"></i> Admin dashboard with analytics</li>
+          </ul>
+          <div class="tech-tags">
+            <span>Laravel</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span><span>JavaScript</span><span>Git</span>
+          </div>
+          <div class="role"><i class="fas fa-user-cog"></i> <strong>My role:</strong> backend modules, DB design, auth & dashboard</div>
+        </div>
+
+        <!-- 2. CRM System -->
+        <div class="project-card">
+          <div class="project-title"><i class="fas fa-handshake"></i> CRM System</div>
+          <p style="color:#334155;"><strong>Customer Relationship Management</strong> – lead & sales pipeline.</p>
+          <div class="project-sub">✨ key features</div>
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> Lead management & follow‑ups</li>
+            <li><i class="fas fa-check-circle"></i> Customer database & sales pipeline</li>
+            <li><i class="fas fa-check-circle"></i> Role permissions & admin panel</li>
+            <li><i class="fas fa-check-circle"></i> Reporting system</li>
+          </ul>
+          <div class="tech-tags">
+            <span>Laravel</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span><span>JS</span>
+          </div>
+          <div class="role"><i class="fas fa-user-cog"></i> <strong>My role:</strong> lead/customer modules, DB relations, responsive UI, reporting</div>
+        </div>
+
+        <!-- 3. E‑commerce Website -->
+        <div class="project-card">
+          <div class="project-title"><i class="fas fa-cart-shopping"></i> E‑commerce Platform</div>
+          <p style="color:#334155;">Fully functional online store with cart & order management.</p>
+          <div class="project-sub">✨ key features</div>
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> Product listing, categories</li>
+            <li><i class="fas fa-check-circle"></i> Shopping cart & orders</li>
+            <li><i class="fas fa-check-circle"></i> User authentication & admin panel</li>
+            <li><i class="fas fa-check-circle"></i> Payment integration (basic)</li>
+          </ul>
+          <div class="tech-tags">
+            <span>Laravel</span><span>PHP</span><span>MySQL</span><span>HTML5</span><span>CSS3</span><span>Bootstrap</span><span>JS</span>
+          </div>
+          <div class="role"><i class="fas fa-user-cog"></i> <strong>My role:</strong> product/cart modules, order system, DB schema, admin panel</div>
+        </div>
+
+        <!-- 4. Admin Panel System -->
+        <div class="project-card">
+          <div class="project-title"><i class="fas fa-chart-pie"></i> Dynamic Admin Dashboard</div>
+          <p style="color:#334155;">Reusable admin panel for content & user management.</p>
+          <div class="project-sub">✨ key features</div>
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> Dashboard analytics</li>
+            <li><i class="fas fa-check-circle"></i> User & content management</li>
+            <li><i class="fas fa-check-circle"></i> Secure login + role‑based access</li>
+            <li><i class="fas fa-check-circle"></i> CRUD operations</li>
+          </ul>
+          <div class="tech-tags">
+            <span>Laravel</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span>
+          </div>
+          <div class="role"><i class="fas fa-user-cog"></i> <strong>My role:</strong> auth, dashboard UI, full CRUD implementation</div>
+        </div>
+      </div>
+      <p style="margin-top: 2rem; text-align: center; font-size:0.95rem; color: #475569;">
+        <i class="fas fa-link"></i> GitHub & live demo links available per request
+      </p>
+    </div>
+  </section>
+
+  <!-- SKILLS (proper order frontend / backend / db / tools) -->
+  <section id="skills">
+    <div class="container">
+      <div class="badge"><i class="fas fa-cog"></i> expertise</div>
+      <h2><i class="fas fa-microchip"></i> technical skills</h2>
+      <div class="skill-blocks">
+        <div class="skill-cat">
+          <h3><i class="fas fa-paint-brush" style="color:#2563eb;"></i> Frontend</h3>
+          <div class="skill-items">
+            <span>HTML5</span> <span>CSS3</span> <span>Bootstrap</span> <span>JavaScript</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <h3><i class="fas fa-server" style="color:#2563eb;"></i> Backend</h3>
+          <div class="skill-items">
+            <span>PHP</span> <span>Laravel</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <h3><i class="fas fa-database" style="color:#2563eb;"></i> Database</h3>
+          <div class="skill-items">
+            <span>MySQL</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <h3><i class="fas fa-code-branch" style="color:#2563eb;"></i> Version control</h3>
+          <div class="skill-items">
+            <span>Git</span> <span>GitHub</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <h3><i class="fas fa-tools" style="color:#2563eb;"></i> Tools</h3>
+          <div class="skill-items">
+            <span>VS Code</span> <span>XAMPP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT & CAREER OBJECTIVE (blended) -->
+  <section id="contact" style="padding-bottom: 4rem;">
+    <div class="container">
+      <div class="badge"><i class="fas fa-paper-plane"></i> get in touch</div>
+      <h2><i class="fas fa-id-card"></i> career & contact</h2>
+      <div style="background: white; border-radius: 40px; padding: 2.5rem; box-shadow: 0 20px 30px -12px #e2e8f0;">
+        <p style="font-size: 1.2rem; font-weight: 500; margin-bottom: 2rem;"><i class="fas fa-bullseye" style="color:#2563eb; margin-right: 8px;"></i> My goal is to grow as a full‑stack developer and contribute to impactful software solutions in a professional organization.</p>
+        <div class="contact-links">
+          <span class="contact-item"><i class="fas fa-envelope"></i> durganand.k@devmail.com</span>
+          <span class="contact-item"><i class="fab fa-github"></i> /durganand-dev</span>
+          <span class="contact-item"><i class="fab fa-linkedin"></i> /in/durganand-k</span>
+          <span class="contact-item"><i class="fas fa-phone-alt"></i> +91 98765 43210</span>
+        </div>
+        <div style="margin-top: 2rem; display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
+          <a href="#" class="btn btn-primary" style="padding: 0.8rem 2rem;"><i class="fas fa-download"></i> Download resume (PDF)</a>
+          <a href="#" class="btn btn-outline"><i class="fas fa-comment-dots"></i> Quick message</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Durganand Kumar Thakur — Laravel Developer. Built with <i class="fas fa-heart" style="color:#f05340;"></i> for clean portfolio.</p>
+      <p style="margin-top: 0.8rem; font-size: 0.85rem;"><i class="fas fa-code"></i> index.html – full modern portfolio, projects list with all details</p>
+    </div>
+  </footer>
+
+  <!-- smooth scroll (optional) -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
 </html>
