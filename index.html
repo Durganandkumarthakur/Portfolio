@@ -1,978 +1,494 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>For Hlo Chipakalli Bashanti 💫</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-            -webkit-text-size-adjust: 100%;
-        }
-        
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            touch-action: manipulation;
-        }
-        
-        body {
-            background: linear-gradient(to bottom, #000428, #004e92);
-            min-height: 100vh;
-            min-height: -webkit-fill-available;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            padding: 10px;
-            overflow-x: hidden;
-        }
-        
-        .constellation-container {
-            width: 100%;
-            height: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            overflow: hidden;
-        }
-        
-        .constellation-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        
-        .message-center {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            z-index: 10;
-            background: rgba(0, 20, 40, 0.85);
-            padding: 20px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            width: 95%;
-            max-width: 500px;
-            box-shadow: 0 0 30px rgba(0, 150, 255, 0.4);
-            max-height: 90vh;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        /* Scrollbar styling for message center */
-        .message-center::-webkit-scrollbar {
-            width: 5px;
-        }
-        
-        .message-center::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-        }
-        
-        .message-center::-webkit-scrollbar-thumb {
-            background: #4cc9f0;
-            border-radius: 10px;
-        }
-        
-        .name-banner {
-            font-size: clamp(1.8rem, 6vw, 2.8rem);
-            color: #f72585;
-            margin-bottom: 10px;
-            text-shadow: 0 0 15px rgba(247, 37, 133, 0.7);
-            font-family: 'Brush Script MT', cursive;
-            background: linear-gradient(45deg, #f72585, #4cc9f0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: nameGlow 3s infinite alternate;
-            line-height: 1.2;
-            word-wrap: break-word;
-            padding: 0 5px;
-        }
-        
-        .constellation-title {
-            font-size: clamp(1.5rem, 5vw, 2.2rem);
-            margin-bottom: 15px;
-            color: #4cc9f0;
-            text-shadow: 0 0 10px rgba(76, 201, 240, 0.7);
-            line-height: 1.3;
-        }
-        
-        .constellation-text {
-            font-size: clamp(1rem, 3.5vw, 1.2rem);
-            line-height: 1.5;
-            margin-bottom: 15px;
-            color: #b8e1ff;
-            padding: 0 5px;
-        }
-        
-        .personal-name {
-            color: #f72585;
-            font-weight: bold;
-            font-style: italic;
-            text-shadow: 0 0 5px rgba(247, 37, 133, 0.5);
-            display: inline-block;
-            word-break: break-word;
-        }
-        
-        .connect-btn {
-            background: linear-gradient(45deg, #4361ee, #4cc9f0);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: clamp(1rem, 4vw, 1.2rem);
-            border-radius: 50px;
-            cursor: pointer;
-            margin-top: 15px;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.5);
-            width: 90%;
-            max-width: 280px;
-            min-height: 50px;
-            touch-action: manipulation;
-        }
-        
-        .connect-btn:active {
-            transform: scale(0.95);
-            box-shadow: 0 3px 10px rgba(67, 97, 238, 0.5);
-        }
-        
-        .connect-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.7);
-        }
-        
-        .star {
-            position: absolute;
-            background-color: white;
-            border-radius: 50%;
-            animation: twinkle 3s infinite alternate;
-        }
-        
-        .shooting-star {
-            position: absolute;
-            width: 80px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, white);
-            transform: rotate(-45deg);
-            animation: shoot 5s infinite;
-            opacity: 0;
-        }
-        
-        .shooting-star:after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: -3px;
-            width: 8px;
-            height: 8px;
-            background: white;
-            border-radius: 50%;
-            box-shadow: 0 0 10px white;
-        }
-        
-        .heart-node {
-            position: absolute;
-            width: 14px;
-            height: 14px;
-            background: #f72585;
-            border-radius: 50%;
-            box-shadow: 0 0 15px #f72585;
-            cursor: pointer;
-            z-index: 5;
-            transition: all 0.3s;
-            touch-action: manipulation;
-        }
-        
-        .heart-node:active {
-            transform: scale(1.5);
-        }
-        
-        .heart-node:hover {
-            transform: scale(1.5);
-            box-shadow: 0 0 25px #f72585;
-        }
-        
-        .heart-node.active {
-            background: #4cc9f0;
-            box-shadow: 0 0 25px #4cc9f0;
-            animation: pulse 1s infinite;
-        }
-        
-        .node-message {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            background: rgba(10, 25, 47, 0.97);
-            padding: 20px;
-            border-radius: 15px;
-            z-index: 20;
-            width: 90%;
-            max-width: 350px;
-            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(76, 201, 240, 0.3);
-            box-shadow: 0 0 30px rgba(76, 201, 240, 0.5);
-            max-height: 70vh;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        .node-message.show {
-            transform: translate(-50%, -50%) scale(1);
-        }
-        
-        .node-close {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            background: none;
-            border: none;
-            color: #4cc9f0;
-            font-size: 1.8rem;
-            cursor: pointer;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            touch-action: manipulation;
-        }
-        
-        .completion-message {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            background: rgba(247, 37, 133, 0.97);
-            padding: 25px;
-            border-radius: 20px;
-            text-align: center;
-            z-index: 25;
-            width: 90%;
-            max-width: 400px;
-            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 0 50px rgba(247, 37, 133, 0.8);
-            max-height: 80vh;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        .completion-message.show {
-            transform: translate(-50%, -50%) scale(1);
-        }
-        
-        .floating-name {
-            position: absolute;
-            font-size: clamp(1.2rem, 4vw, 1.8rem);
-            color: rgba(247, 37, 133, 0.25);
-            font-family: 'Brush Script MT', cursive;
-            z-index: 0;
-            animation: floatName 20s infinite linear;
-            pointer-events: none;
-            word-break: break-word;
-            max-width: 100px;
-            text-align: center;
-        }
-        
-        /* Mobile-specific optimizations */
-        @media (max-width: 480px) {
-            .message-center {
-                padding: 15px;
-                width: 92%;
-            }
-            
-            .node-message {
-                padding: 15px;
-                width: 92%;
-            }
-            
-            .completion-message {
-                padding: 20px;
-                width: 92%;
-            }
-            
-            .connect-btn {
-                padding: 14px 25px;
-                font-size: 1.1rem;
-            }
-            
-            .heart-node {
-                width: 16px;
-                height: 16px;
-            }
-        }
-        
-        @media (max-height: 700px) and (orientation: landscape) {
-            .message-center {
-                max-height: 85vh;
-                padding: 15px;
-            }
-            
-            .name-banner {
-                font-size: clamp(1.5rem, 4vw, 2rem);
-                margin-bottom: 5px;
-            }
-            
-            .constellation-title {
-                margin-bottom: 10px;
-            }
-            
-            .constellation-text {
-                margin-bottom: 10px;
-                font-size: 0.9rem;
-            }
-        }
-        
-        /* Prevent text selection on mobile */
-        .no-select {
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-        
-        /* Animations */
-        @keyframes twinkle {
-            0% { opacity: 0.3; }
-            100% { opacity: 1; }
-        }
-        
-        @keyframes shoot {
-            0% {
-                left: -100px;
-                top: -100px;
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            20% {
-                opacity: 1;
-            }
-            100% {
-                left: calc(100vw + 100px);
-                top: calc(100vh + 100px);
-                opacity: 0;
-            }
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.3); }
-            100% { transform: scale(1); }
-        }
-        
-        @keyframes nameGlow {
-            0% { 
-                text-shadow: 0 0 10px rgba(247, 37, 133, 0.7);
-            }
-            100% { 
-                text-shadow: 0 0 20px rgba(247, 37, 133, 0.9), 0 0 30px rgba(76, 201, 240, 0.5);
-            }
-        }
-        
-        @keyframes floatName {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.25;
-            }
-            90% {
-                opacity: 0.25;
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        /* Loading screen for better UX */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000428;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-            transition: opacity 0.5s;
-        }
-        
-        .loading-text {
-            color: #4cc9f0;
-            font-size: 1.5rem;
-            margin-top: 20px;
-            text-align: center;
-            padding: 0 20px;
-        }
-        
-        .loading-heart {
-            font-size: 3rem;
-            color: #f72585;
-            animation: pulse 1s infinite;
-        }
-        
-        /* Touch feedback for buttons */
-        .touch-feedback:active {
-            opacity: 0.8;
-        }
-        
-        /* Ensure proper spacing on very small screens */
-        @media (max-width: 320px) {
-            .message-center {
-                padding: 12px;
-            }
-            
-            .name-banner {
-                font-size: 1.6rem;
-            }
-            
-            .constellation-title {
-                font-size: 1.4rem;
-            }
-            
-            .connect-btn {
-                padding: 12px 20px;
-                font-size: 1rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Durganand Kumar Thakur · Laravel Developer</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts: Inter + space for monospace -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafc;
+      color: #1e293b;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    /* navbar */
+    .navbar {
+      background-color: #ffffffdd;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid #eef2f6;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(145deg, #0f2b3d, #2563eb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      font-weight: 500;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #334155;
+      transition: color 0.2s;
+      font-size: 1rem;
+    }
+    .nav-links a:hover {
+      color: #2563eb;
+    }
+    /* buttons & sections */
+    .btn {
+      display: inline-block;
+      background: white;
+      padding: 0.6rem 1.4rem;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.95rem;
+      border: 1px solid #e2e8f0;
+      color: #1e293b;
+      transition: all 0.2s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .btn-primary {
+      background: #1e293b;
+      color: white;
+      border: none;
+      box-shadow: 0 8px 18px -6px #1e293b60;
+    }
+    .btn-primary:hover {
+      background: #0f172a;
+    }
+    .btn-outline:hover {
+      background: #f8fafc;
+      border-color: #94a3b8;
+    }
+    section {
+      padding: 5rem 0;
+      border-bottom: 1px solid #edf2f7;
+    }
+    section:last-child {
+      border-bottom: none;
+    }
+    .badge {
+      background: #e6f0ff;
+      color: #1e4bd2;
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      display: inline-block;
+      margin-bottom: 1rem;
+      letter-spacing: 0.3px;
+    }
+    h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    h2 i {
+      color: #2563eb;
+      margin-right: 10px;
+      font-size: 2rem;
+    }
+    .grid-2, .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 800px) {
+      .grid-2, .projects-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+    /* cards */
+    .project-card {
+      background: white;
+      border-radius: 28px;
+      padding: 1.8rem;
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.05);
+      border: 1px solid #ffffff50;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 40px -16px rgba(37,99,235,0.15);
+    }
+    .project-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .project-title i {
+      color: #2563eb;
+      font-size: 1.8rem;
+    }
+    .project-sub {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #2563eb;
+      margin: 1rem 0 0.5rem;
+      border-left: 4px solid #2563eb;
+      padding-left: 0.7rem;
+    }
+    .feature-list {
+      list-style: none;
+      margin: 0.5rem 0 1rem;
+    }
+    .feature-list li {
+      margin-bottom: 0.4rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+    }
+    .feature-list i {
+      color: #2563eb;
+      font-size: 0.9rem;
+      margin-top: 0.2rem;
+      min-width: 1.2rem;
+    }
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1.2rem 0 1rem;
+    }
+    .tech-tags span {
+      background: #eef2ff;
+      color: #1e3a8a;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+    }
+    .role {
+      background: #f1f5f9;
+      padding: 0.8rem 1rem;
+      border-radius: 18px;
+      font-size: 0.9rem;
+      border-left: 3px solid #0f2b3d;
+    }
+    .skill-blocks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin-top: 2rem;
+    }
+    .skill-cat {
+      background: white;
+      border-radius: 26px;
+      padding: 1.6rem 2rem;
+      box-shadow: 0 6px 18px #e2e8f0;
+      flex: 1 1 200px;
+    }
+    .skill-cat h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .skill-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+    .skill-items span {
+      background: #f1f4f9;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .about-text {
+      font-size: 1.15rem;
+      max-width: 780px;
+      background: white;
+      padding: 2.2rem 2.8rem;
+      border-radius: 40px;
+      box-shadow: 0 20px 30px -10px rgba(0,0,0,0.02);
+      border: 1px solid #f0f4fe;
+    }
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin: 2.5rem 0 0;
+    }
+    .contact-item {
+      background: white;
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      font-weight: 500;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.02);
+      border: 1px solid #e9edf3;
+    }
+    .contact-item i {
+      margin-right: 0.5rem;
+      color: #2563eb;
+    }
+    footer {
+      text-align: center;
+      padding: 2.5rem 0;
+      color: #64748b;
+      border-top: 1px solid #e2e8f0;
+    }
+  </style>
 </head>
-<body class="no-select">
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <div class="loading-heart">💫</div>
-        <div class="loading-text">Creating stars for Hlo Chipakalli Bashanti...</div>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <span class="logo"><i class="fas fa-laravel" style="color:#f05340; margin-right:8px;"></i>Durganand.dev</span>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a href="#contact" class="btn btn-primary" style="padding:0.5rem 1.6rem;"><i class="far fa-paper-plane"></i> Hire</a>
     </div>
-    
-    <div class="constellation-container">
-        <canvas class="constellation-canvas" id="constellationCanvas"></canvas>
-        
-        <div class="message-center">
-            <div class="name-banner">For Hlo Chipakalli Bashanti</div>
-            <h1 class="constellation-title">Our Heart Constellation 💫</h1>
-            <p class="constellation-text">Each star represents a beautiful moment <span class="personal-name">Hlo Chipakalli Bashanti</span> and I have shared.</p>
-            <p class="constellation-text">Tap the stars to reveal our special memories written just for you, my dear <span class="personal-name">Hlo Chipakalli Bashanti</span>.</p>
-            
-            <button class="connect-btn touch-feedback" id="connectBtn">Connect Our Stars</button>
-            
-            <p style="font-size: 0.9rem; color: #8ab4f8; margin-top: 20px; font-style: italic;">
-                Tap on the pink stars to activate them
-            </p>
-        </div>
-        
-        <div class="node-message" id="nodeMessage">
-            <button class="node-close touch-feedback" id="nodeClose">&times;</button>
-            <h3 id="nodeTitle" style="color: #4cc9f0; margin-bottom: 15px; font-size: 1.3rem;">Memory Node</h3>
-            <p id="nodeContent" style="color: #b8e1ff; line-height: 1.5; font-size: 1.1rem;">Tap on stars to reveal our special memories.</p>
-        </div>
-        
-        <div class="completion-message" id="completionMessage">
-            <h2 style="color: white; margin-bottom: 15px; font-size: clamp(1.5rem, 5vw, 2rem);">Our Love Constellation is Complete! 💖</h2>
-            <p style="color: #ffd1dc; font-size: clamp(1rem, 3.5vw, 1.2rem); line-height: 1.5; margin-bottom: 15px;">
-                <span style="color: #f72585; font-weight: bold; font-family: 'Brush Script MT', cursive;">Hlo Chipakalli Bashanti</span>, just like these stars that form a perfect heart in the sky, 
-                our love creates a constellation that will shine forever.
-            </p>
-            <p style="color: #ffd1dc; font-size: clamp(1rem, 3.5vw, 1.2rem); line-height: 1.5;">
-                No matter where life takes us, our connection will always be written in the stars.
-            </p>
-            <div style="font-size: 3rem; margin-top: 20px; color: #f72585;">H C B 💫</div>
-            <button id="closeCompletion" style="margin-top: 20px; padding: 10px 25px; background: white; color: #f72585; border: none; border-radius: 50px; font-weight: bold; cursor: pointer; font-size: 1rem;" class="touch-feedback">Close</button>
-        </div>
-    </div>
+  </nav>
 
-    <script>
-        // Constellation configuration - Updated with personalized messages
-        const constellation = {
-            nodes: [
-                {id: 0, x: 50, y: 30, title: "First Meeting with Hlo", message: "The day I met Hlo Chipakalli Bashanti, my stars realigned and my journey truly began."},
-                {id: 1, x: 30, y: 50, title: "Hlo's First Laugh", message: "When Hlo Chipakalli Bashanti's laughter became my favorite melody in the universe."},
-                {id: 2, x: 70, y: 50, title: "Our First Adventure", message: "Our first adventure together, with Hlo Chipakalli Bashanti by my side, exploring the world."},
-                {id: 3, x: 20, y: 70, title: "Shared Dreams with Hlo", message: "The night Hlo Chipakalli Bashanti and I shared our dreams under the starry sky."},
-                {id: 4, x: 50, y: 70, title: "True Connection", message: "The moment I knew Hlo Chipakalli Bashanti was my destined soulmate."},
-                {id: 5, x: 80, y: 70, title: "Unforgettable Moments", message: "Countless precious moments with Hlo Chipakalli Bashanti that I'll cherish forever."},
-                {id: 6, x: 40, y: 90, title: "Growing Together", message: "Watching my love for Hlo Chipakalli Bashanti grow stronger with each sunrise."},
-                {id: 7, x: 60, y: 90, title: "Forever Promise to Hlo", message: "My eternal promise to Hlo Chipakalli Bashanti that lives in my heart."}
-            ],
-            connections: [
-                [0, 1], [0, 2], [1, 3], [1, 4], [2, 4], [2, 5],
-                [3, 4], [4, 5], [3, 6], [4, 6], [4, 7], [5, 7]
-            ]
-        };
+  <!-- HERO / HOME -->
+  <section id="home" style="padding-top: 3rem; padding-bottom: 2rem;">
+    <div class="container" style="display: flex; flex-wrap: wrap; align-items: center; gap: 3rem;">
+      <div style="flex: 1 1 300px;">
+        <span class="badge"><i class="fas fa-code"></i> Laravel Developer · 1 year exp</span>
+        <h1 style="font-size: 3.2rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em;">Durganand Kumar Thakur</h1>
+        <p style="font-size: 1.3rem; color: #334155; margin: 1.2rem 0 1.8rem;">I build secure, scalable web apps — ERP, CRM, e‑commerce.</p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="#projects" class="btn btn-primary"><i class="fas fa-arrow-down"></i> View projects</a>
+          <a href="#contact" class="btn btn-outline"><i class="fas fa-comment"></i> Let's talk</a>
+        </div>
+        <div style="margin-top: 2.5rem; display: flex; gap: 2rem; color: #2563eb;">
+          <span><i class="fab fa-github"></i> github/durganand-dev</span>
+          <span><i class="fab fa-linkedin"></i> linkedin/in/durganand</span>
+        </div>
+      </div>
+      <div style="flex: 0 0 180px;">
+        <!-- abstract avatar / placeholder: monogram -->
+        <div style="width: 180px; height: 180px; background: linear-gradient(145deg, #1e293b, #2563eb); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 4rem; box-shadow: 0 30px 30px -10px #1e293b80;">DK</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <div class="container">
+      <div class="badge"><i class="far fa-user"></i> profile</div>
+      <h2><i class="fas fa-address-card"></i> About me</h2>
+      <div class="about-text">
+        <p style="margin-bottom: 1.2rem;">I am <strong>Durganand Kumar Thakur</strong>, a passionate Laravel Developer with 1 year of professional experience. I hold a BCA and also pursued two years of BSc in Mathematics, which strengthened my logical thinking and problem‑solving abilities.</p>
+        <p>I have worked on various real‑world projects including <strong>ERP systems, Admin Panels, CRM, and E‑commerce</strong>. My strong interest lies in building secure, scalable, and user‑friendly web applications. I specialize in backend development with Laravel & PHP, while also having solid frontend knowledge. My goal is to grow as a full‑stack developer and contribute to impactful software solutions.</p>
+        <div style="margin-top: 1.8rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+          <span><i class="fas fa-graduation-cap" style="color:#2563eb;"></i> BCA · BSc (Maths) 2 yrs</span>
+          <span><i class="fas fa-map-pin" style="color:#2563eb;"></i> based in India</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS (DETAILED)  with exactly 4 projects as given -->
+  <section id="projects">
+    <div class="container">
+      <div class="badge"><i class="fas fa-laptop-code"></i> portfolio</div>
+      <h2><i class="fas fa-diagram-project"></i> real‑world projects</h2>
+      <div class="projects-grid">
         
-        let activeNodes = new Set();
-        let canvas, ctx;
-        let stars = [];
-        let heartNodes = [];
-        let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        
-        // Initialize canvas
-        function initCanvas() {
-            canvas = document.getElementById('constellationCanvas');
-            ctx = canvas.getContext('2d');
-            
-            // Set canvas size based on device
-            updateCanvasSize();
-            
-            // Hide loading screen
-            setTimeout(() => {
-                document.getElementById('loadingScreen').style.opacity = '0';
-                setTimeout(() => {
-                    document.getElementById('loadingScreen').style.display = 'none';
-                }, 500);
-            }, 1500);
-            
-            // Create background stars
-            createStars();
-            
-            // Create floating name elements (reduced for mobile)
-            createFloatingNames();
-            
-            // Create heart nodes with mobile-appropriate sizing
-            createHeartNodes();
-            
-            // Draw connections
-            drawConnections();
-            
-            // Start animation
-            animate();
-            
-            // Add touch event listeners for mobile
-            if (isMobile) {
-                setupMobileTouchEvents();
-            }
-        }
-        
-        // Update canvas size for responsive design
-        function updateCanvasSize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            
-            // Adjust node positions for mobile if needed
-            if (window.innerWidth < 768) {
-                // Slight adjustment for better mobile visibility
-                constellation.nodes.forEach(node => {
-                    // Keep positions but ensure they're visible
-                    if (node.x < 10) node.x = 15;
-                    if (node.x > 90) node.x = 85;
-                    if (node.y < 15) node.y = 20;
-                    if (node.y > 85) node.y = 80;
-                });
-            }
-        }
-        
-        // Create background stars
-        function createStars() {
-            const starCount = isMobile ? 100 : 200; // Fewer stars on mobile
-            
-            for (let i = 0; i < starCount; i++) {
-                stars.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    size: Math.random() * 1.5 + 0.5, // Smaller on mobile
-                    opacity: Math.random() * 0.7 + 0.3,
-                    speed: Math.random() * 0.3 + 0.1,
-                    twinkleSpeed: Math.random() * 0.05 + 0.02
-                });
-            }
-            
-            // Create shooting stars (fewer on mobile)
-            createShootingStars();
-        }
-        
-        // Create floating name elements
-        function createFloatingNames() {
-            const nameParts = ["Hlo", "Chipakalli", "Bashanti", "💖", "HCB", "Love"];
-            const count = isMobile ? 12 : 20; // Fewer on mobile
-            
-            for (let i = 0; i < count; i++) {
-                const nameElement = document.createElement('div');
-                nameElement.classList.add('floating-name');
-                
-                const namePart = nameParts[Math.floor(Math.random() * nameParts.length)];
-                const left = Math.random() * 100;
-                const duration = Math.random() * 25 + 25;
-                const delay = Math.random() * 15;
-                const fontSize = isMobile ? 
-                    Math.random() * 15 + 12 : 
-                    Math.random() * 25 + 15;
-                
-                nameElement.textContent = namePart;
-                nameElement.style.left = `${left}%`;
-                nameElement.style.animationDuration = `${duration}s`;
-                nameElement.style.animationDelay = `${delay}s`;
-                nameElement.style.fontSize = `${fontSize}px`;
-                nameElement.style.color = `rgba(${Math.floor(Math.random() * 100 + 155)}, ${Math.floor(Math.random() * 100)}, ${Math.floor(Math.random() * 100 + 155)}, 0.2)`;
-                
-                document.body.appendChild(nameElement);
-            }
-        }
-        
-        // Create shooting stars
-        function createShootingStars() {
-            const shootingStarCount = isMobile ? 2 : 3;
-            
-            for (let i = 0; i < shootingStarCount; i++) {
-                const star = document.createElement('div');
-                star.classList.add('shooting-star');
-                
-                const left = Math.random() * 100;
-                const top = Math.random() * 100;
-                const duration = Math.random() * 3 + 4;
-                const delay = Math.random() * 10;
-                
-                star.style.left = `${left}%`;
-                star.style.top = `${top}%`;
-                star.style.animationDuration = `${duration}s`;
-                star.style.animationDelay = `${delay}s`;
-                star.style.width = isMobile ? '60px' : '80px';
-                
-                document.body.appendChild(star);
-            }
-        }
-        
-        // Create heart nodes with mobile optimization
-        function createHeartNodes() {
-            constellation.nodes.forEach(node => {
-                const heartNode = document.createElement('div');
-                heartNode.classList.add('heart-node');
-                heartNode.dataset.id = node.id;
-                
-                // Position node
-                heartNode.style.left = `${node.x}%`;
-                heartNode.style.top = `${node.y}%`;
-                
-                // Make nodes larger on mobile for easier tapping
-                if (isMobile) {
-                    heartNode.style.width = '18px';
-                    heartNode.style.height = '18px';
-                }
-                
-                // Add click/touch event
-                heartNode.addEventListener('click', () => activateNode(node.id));
-                
-                document.body.appendChild(heartNode);
-                heartNodes.push(heartNode);
-            });
-        }
-        
-        // Setup mobile touch events
-        function setupMobileTouchEvents() {
-            // Prevent zoom on double tap
-            let lastTouchEnd = 0;
-            document.addEventListener('touchend', function(event) {
-                const now = (new Date()).getTime();
-                if (now - lastTouchEnd <= 300) {
-                    event.preventDefault();
-                }
-                lastTouchEnd = now;
-            }, false);
-            
-            // Prevent context menu on long press
-            document.addEventListener('contextmenu', function(e) {
-                e.preventDefault();
-                return false;
-            });
-        }
-        
-        // Draw connections between nodes
-        function drawConnections() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Draw all connections in light gray
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
-            ctx.lineWidth = isMobile ? 1 : 1;
-            
-            constellation.connections.forEach(conn => {
-                const [id1, id2] = conn;
-                const node1 = constellation.nodes[id1];
-                const node2 = constellation.nodes[id2];
-                
-                // Convert percentage to pixels
-                const x1 = (node1.x / 100) * canvas.width;
-                const y1 = (node1.y / 100) * canvas.height;
-                const x2 = (node2.x / 100) * canvas.width;
-                const y2 = (node2.y / 100) * canvas.height;
-                
-                ctx.beginPath();
-                ctx.moveTo(x1, y1);
-                ctx.lineTo(x2, y2);
-                ctx.stroke();
-            });
-            
-            // Draw active connections in pink
-            if (activeNodes.size > 1) {
-                ctx.strokeStyle = '#f72585';
-                ctx.lineWidth = isMobile ? 2 : 2;
-                ctx.shadowBlur = 10;
-                ctx.shadowColor = '#f72585';
-                
-                const activeArray = Array.from(activeNodes);
-                
-                for (let i = 0; i < activeArray.length - 1; i++) {
-                    for (let j = i + 1; j < activeArray.length; j++) {
-                        const id1 = activeArray[i];
-                        const id2 = activeArray[j];
-                        
-                        // Check if this connection exists in our constellation
-                        const connectionExists = constellation.connections.some(
-                            conn => (conn[0] === id1 && conn[1] === id2) || (conn[0] === id2 && conn[1] === id1)
-                        );
-                        
-                        if (connectionExists) {
-                            const node1 = constellation.nodes[id1];
-                            const node2 = constellation.nodes[id2];
-                            
-                            const x1 = (node1.x / 100) * canvas.width;
-                            const y1 = (node1.y / 100) * canvas.height;
-                            const x2 = (node2.x / 100) * canvas.width;
-                            const y2 = (node2.y / 100) * canvas.height;
-                            
-                            ctx.beginPath();
-                            ctx.moveTo(x1, y1);
-                            ctx.lineTo(x2, y2);
-                            ctx.stroke();
-                        }
-                    }
-                }
-                
-                ctx.shadowBlur = 0;
-            }
-        }
-        
-        // Activate a node
-        function activateNode(id) {
-            const node = constellation.nodes[id];
-            const heartNode = heartNodes[id];
-            
-            // Toggle active state
-            if (activeNodes.has(id)) {
-                activeNodes.delete(id);
-                heartNode.classList.remove('active');
-            } else {
-                activeNodes.add(id);
-                heartNode.classList.add('active');
-                
-                // Show node message
-                showNodeMessage(node);
-            }
-            
-            // Redraw connections
-            drawConnections();
-            
-            // Check if constellation is complete
-            if (activeNodes.size === constellation.nodes.length) {
-                setTimeout(() => {
-                    showCompletionMessage();
-                }, 500);
-            }
-        }
-        
-        // Show node message
-        function showNodeMessage(node) {
-            document.getElementById('nodeTitle').textContent = node.title;
-            document.getElementById('nodeContent').textContent = node.message;
-            document.getElementById('nodeMessage').classList.add('show');
-            
-            // Add name particle effect (simpler on mobile)
-            if (!isMobile) {
-                createNameParticles();
-            }
-        }
-        
-        // Show completion message
-        function showCompletionMessage() {
-            document.getElementById('completionMessage').classList.add('show');
-            
-            // Create celebration stars with her name
-            createCelebrationStars();
-        }
-        
-        // Create name particles
-        function createNameParticles() {
-            const name = "Hlo Chipakalli Bashanti";
-            const letters = name.split('');
-            
-            for (let i = 0; i < letters.length; i++) {
-                if (letters[i] !== ' ') {
-                    setTimeout(() => {
-                        const particle = document.createElement('div');
-                        particle.textContent = letters[i];
-                        particle.style.position = 'fixed';
-                        particle.style.left = `${Math.random() * 100}%`;
-                        particle.style.top = `${Math.random() * 100}%`;
-                        particle.style.fontSize = `${Math.random() * 20 + 15}px`;
-                        particle.style.color = `rgba(${Math.floor(Math.random() * 100 + 155)}, ${Math.floor(Math.random() * 100)}, ${Math.floor(Math.random() * 100 + 155)}, 0.8)`;
-                        particle.style.fontFamily = "'Brush Script MT', cursive";
-                        particle.style.fontWeight = 'bold';
-                        particle.style.zIndex = '15';
-                        particle.style.opacity = '0';
-                        particle.style.transition = 'opacity 0.5s, transform 1.5s';
-                        
-                        document.body.appendChild(particle);
-                        
-                        // Fade in
-                        setTimeout(() => {
-                            particle.style.opacity = '1';
-                            particle.style.transform = `scale(${Math.random() * 1.5 + 1}) rotate(${Math.random() * 360}deg)`;
-                        }, 10);
-                        
-                        // Remove after animation
-                        setTimeout(() => {
-                            particle.style.opacity = '0';
-                            setTimeout(() => {
-                                particle.remove();
-                            }, 500);
-                        }, 1500);
-                    }, i * 80);
-                }
-            }
-        }
-        
-        // Create celebration stars
-        function createCelebrationStars() {
-            // Create stars with her initials
-            const initials = ["H", "C", "B", "💖", "❤️"];
-            const count = isMobile ? 25 : 40;
-            
-            for (let i = 0; i < count; i++) {
-                setTimeout(() => {
-                    const star = document.createElement('div');
-                    const symbol = initials[Math.floor(Math.random() * initials.length)];
-                    star.innerHTML = symbol;
-                    star.style.position = 'fixed';
-                    star.style.left = `${Math.random() * 100}%`;
-                    star.style.top = `${Math.random() * 100}%`;
-                    star.style.fontSize = `${Math.random() * (isMobile ? 25 : 30) + 20}px`;
-                    star.style.zIndex = '15';
-                    star.style.opacity = '0';
-                    star.style.transition = 'opacity 0.5s, transform 1.5s';
-                    
-                    if (symbol === "H" || symbol === "C" || symbol === "B") {
-                        star.style.color = '#f72585';
-                        star.style.fontFamily = "'Brush Script MT', cursive";
-                        star.style.fontWeight = 'bold';
-                    }
-                    
-                    document.body.appendChild(star);
-                    
-                    // Fade in
-                    setTimeout(() => {
-                        star.style.opacity = '1';
-                        star.style.transform = `scale(${Math.random() * 1.5 + 1}) rotate(${Math.random() * 360}deg)`;
-                    }, 10);
-                    
-                    // Remove after animation
-                    setTimeout(() => {
-                        star.style.opacity = '0';
-                        setTimeout(() => {
-                            star.remove();
-                        }, 500);
-                    }, 2000);
-                }, i * (isMobile ? 120 : 80));
-            }
-        }
-        
-        // Animate background stars
-        function animate() {
-            // Update stars
-            stars.forEach(star => {
-                star.opacity += star.twinkleSpeed;
-                if (star.opacity > 1 || star.opacity < 0.3) {
-                    star.twinkleSpeed = -star.twinkleSpeed;
-                }
-            });
-            
-            // Redraw stars
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawConnections();
-            
-            // Draw stars
-            stars.forEach(star => {
-                ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
-                ctx.beginPath();
-                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-                ctx.fill();
-            });
-            
-            requestAnimationFrame(animate);
-        }
-        
-        // Connect button functionality
-        document.getElementById('connectBtn').addEventListener('click', function() {
-            // Change button text
-            this.textContent = "Connecting Stars for Hlo...";
-            this.disabled = true;
-            
-            // Activate all nodes one by one
-            let delay = 0;
-            constellation.nodes.forEach((node, index) => {
-                setTimeout(() => {
-                    activateNode(node.id);
-                    
-                    // On the last node, restore button
-                    if (index === constellation.nodes.length - 1) {
-                        setTimeout(() => {
-                            this.textContent = "Stars Connected! 💫";
-                            this.style.background = 'linear-gradient(45deg, #f72585, #4cc9f0)';
-                        }, 500);
-                    }
-                }, delay);
-                delay += 300;
-            });
-        });
-        
-        // Close node message
-        document.getElementById('nodeClose').addEventListener('click', function() {
-            document.getElementById('nodeMessage').classList.remove('show');
-        });
-        
-        // Close completion message
-        document.getElementById('closeCompletion').addEventListener('click', function() {
-            document.getElementById('completionMessage').classList.remove('show');
-        });
-        
-        // Initialize when page loads
-        window.addEventListener('DOMContentLoaded', initCanvas);
-        
-        // Resize canvas when window resizes or orientation changes
-        window.addEventListener('resize', updateCanvasSize);
-        window.addEventListener('orientationchange', function() {
-            // Wait for orientation to complete
-            setTimeout(updateCanvasSize, 100);
-        });
-        
-        // Prevent bounce/scroll on iOS
-        document.body.addEventListener('touchmove', function(e) {
-            if (e.target.classList.contains('message-center') || 
-                e.target.classList.contains('node-message') || 
-                e.target.classList.contains('completion-message')) {
-                return; // Allow scrolling in message areas
-            }
-            e.preventDefault();
-        }, { passive: false });
-    </script>
+        <!-- 1. ERP System -->
+        <div class="project-card">
+          <div class="project-title"><i class="fas fa-building"></i> ERP Management System</div>
+          <p style="color:#334155;"><strong>Enterprise Resource Planning</strong> – complete company operations suite.</p>
+          <div class="project-sub">✨ key features</div>
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> Employee, attendance & payroll</li>
+            <li><i class="fas fa-check-circle"></i> Inventory & reporting modules</li>
+            <li><i class="fas fa-check-circle"></i> Role‑based authentication</li>
+            <li><i class="fas fa-check-circle"></i> Admin dashboard with analytics</li>
+          </ul>
+          <div class="tech-tags">
+            <span>Laravel</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span><span>JavaScript</span><span>Git</span>
+          </div>
+          <div class="role"><i class="fas fa-user-cog"></i> <strong>My role:</strong> backend modules, DB design, auth & dashboard</div>
+        </div>
+
+        <!-- 2. CRM System -->
+        <div class="project-card">
+          <div class="project-title"><i class="fas fa-handshake"></i> CRM System</div>
+          <p style="color:#334155;"><strong>Customer Relationship Management</strong> – lead & sales pipeline.</p>
+          <div class="project-sub">✨ key features</div>
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> Lead management & follow‑ups</li>
+            <li><i class="fas fa-check-circle"></i> Customer database & sales pipeline</li>
+            <li><i class="fas fa-check-circle"></i> Role permissions & admin panel</li>
+            <li><i class="fas fa-check-circle"></i> Reporting system</li>
+          </ul>
+          <div class="tech-tags">
+            <span>Laravel</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span><span>JS</span>
+          </div>
+          <div class="role"><i class="fas fa-user-cog"></i> <strong>My role:</strong> lead/customer modules, DB relations, responsive UI, reporting</div>
+        </div>
+
+        <!-- 3. E‑commerce Website -->
+        <div class="project-card">
+          <div class="project-title"><i class="fas fa-cart-shopping"></i> E‑commerce Platform</div>
+          <p style="color:#334155;">Fully functional online store with cart & order management.</p>
+          <div class="project-sub">✨ key features</div>
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> Product listing, categories</li>
+            <li><i class="fas fa-check-circle"></i> Shopping cart & orders</li>
+            <li><i class="fas fa-check-circle"></i> User authentication & admin panel</li>
+            <li><i class="fas fa-check-circle"></i> Payment integration (basic)</li>
+          </ul>
+          <div class="tech-tags">
+            <span>Laravel</span><span>PHP</span><span>MySQL</span><span>HTML5</span><span>CSS3</span><span>Bootstrap</span><span>JS</span>
+          </div>
+          <div class="role"><i class="fas fa-user-cog"></i> <strong>My role:</strong> product/cart modules, order system, DB schema, admin panel</div>
+        </div>
+
+        <!-- 4. Admin Panel System -->
+        <div class="project-card">
+          <div class="project-title"><i class="fas fa-chart-pie"></i> Dynamic Admin Dashboard</div>
+          <p style="color:#334155;">Reusable admin panel for content & user management.</p>
+          <div class="project-sub">✨ key features</div>
+          <ul class="feature-list">
+            <li><i class="fas fa-check-circle"></i> Dashboard analytics</li>
+            <li><i class="fas fa-check-circle"></i> User & content management</li>
+            <li><i class="fas fa-check-circle"></i> Secure login + role‑based access</li>
+            <li><i class="fas fa-check-circle"></i> CRUD operations</li>
+          </ul>
+          <div class="tech-tags">
+            <span>Laravel</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span>
+          </div>
+          <div class="role"><i class="fas fa-user-cog"></i> <strong>My role:</strong> auth, dashboard UI, full CRUD implementation</div>
+        </div>
+      </div>
+      <p style="margin-top: 2rem; text-align: center; font-size:0.95rem; color: #475569;">
+        <i class="fas fa-link"></i> GitHub & live demo links available per request
+      </p>
+    </div>
+  </section>
+
+  <!-- SKILLS (proper order frontend / backend / db / tools) -->
+  <section id="skills">
+    <div class="container">
+      <div class="badge"><i class="fas fa-cog"></i> expertise</div>
+      <h2><i class="fas fa-microchip"></i> technical skills</h2>
+      <div class="skill-blocks">
+        <div class="skill-cat">
+          <h3><i class="fas fa-paint-brush" style="color:#2563eb;"></i> Frontend</h3>
+          <div class="skill-items">
+            <span>HTML5</span> <span>CSS3</span> <span>Bootstrap</span> <span>JavaScript</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <h3><i class="fas fa-server" style="color:#2563eb;"></i> Backend</h3>
+          <div class="skill-items">
+            <span>PHP</span> <span>Laravel</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <h3><i class="fas fa-database" style="color:#2563eb;"></i> Database</h3>
+          <div class="skill-items">
+            <span>MySQL</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <h3><i class="fas fa-code-branch" style="color:#2563eb;"></i> Version control</h3>
+          <div class="skill-items">
+            <span>Git</span> <span>GitHub</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <h3><i class="fas fa-tools" style="color:#2563eb;"></i> Tools</h3>
+          <div class="skill-items">
+            <span>VS Code</span> <span>XAMPP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT & CAREER OBJECTIVE (blended) -->
+  <section id="contact" style="padding-bottom: 4rem;">
+    <div class="container">
+      <div class="badge"><i class="fas fa-paper-plane"></i> get in touch</div>
+      <h2><i class="fas fa-id-card"></i> career & contact</h2>
+      <div style="background: white; border-radius: 40px; padding: 2.5rem; box-shadow: 0 20px 30px -12px #e2e8f0;">
+        <p style="font-size: 1.2rem; font-weight: 500; margin-bottom: 2rem;"><i class="fas fa-bullseye" style="color:#2563eb; margin-right: 8px;"></i> My goal is to grow as a full‑stack developer and contribute to impactful software solutions in a professional organization.</p>
+        <div class="contact-links">
+          <span class="contact-item"><i class="fas fa-envelope"></i> durganand.k@devmail.com</span>
+          <span class="contact-item"><i class="fab fa-github"></i> /durganand-dev</span>
+          <span class="contact-item"><i class="fab fa-linkedin"></i> /in/durganand-k</span>
+          <span class="contact-item"><i class="fas fa-phone-alt"></i> +91 98765 43210</span>
+        </div>
+        <div style="margin-top: 2rem; display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
+          <a href="#" class="btn btn-primary" style="padding: 0.8rem 2rem;"><i class="fas fa-download"></i> Download resume (PDF)</a>
+          <a href="#" class="btn btn-outline"><i class="fas fa-comment-dots"></i> Quick message</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Durganand Kumar Thakur — Laravel Developer. Built with <i class="fas fa-heart" style="color:#f05340;"></i> for clean portfolio.</p>
+      <p style="margin-top: 0.8rem; font-size: 0.85rem;"><i class="fas fa-code"></i> index.html – full modern portfolio, projects list with all details</p>
+    </div>
+  </footer>
+
+  <!-- smooth scroll (optional) -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
 </body>
 </html>
