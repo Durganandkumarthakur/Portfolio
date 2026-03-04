@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Durganand Kumar Thakur · Laravel Developer</title>
-  <!-- Font Awesome 6 (free) -->
+  <title>Durganand Kumar Thakur · animated dark portfolio</title>
+  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Google Fonts: Inter + space for monospace -->
+  <!-- Google Font: Inter + space for mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -18,26 +18,33 @@
     }
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #f9fafc;
-      color: #1e293b;
+      background-color: #0a0c10;
+      color: #e9edf3;
       line-height: 1.5;
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
+    /* custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #14181f; }
+    ::-webkit-scrollbar-thumb { background: #2d3a4a; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3b4b5e; }
+
     .container {
       max-width: 1280px;
       margin: 0 auto;
       padding: 0 2rem;
     }
-    /* navbar */
+
+    /* navbar glassmorphism dark */
     .navbar {
-      background-color: #ffffffdd;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+      background: rgba(10, 14, 18, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid #1e2a36;
       position: sticky;
       top: 0;
-      z-index: 50;
-      border-bottom: 1px solid #eef2f6;
+      z-index: 100;
     }
     .nav-container {
       display: flex;
@@ -48,178 +55,254 @@
       margin: 0 auto;
     }
     .logo {
-      font-weight: 700;
-      font-size: 1.5rem;
-      letter-spacing: -0.02em;
-      background: linear-gradient(145deg, #0f2b3d, #2563eb);
+      font-weight: 800;
+      font-size: 1.7rem;
+      background: linear-gradient(130deg, #7aa2f7, #bb9af7);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      letter-spacing: -0.02em;
     }
     .nav-links {
       display: flex;
-      gap: 2.5rem;
+      gap: 2.8rem;
       font-weight: 500;
     }
     .nav-links a {
       text-decoration: none;
-      color: #334155;
-      transition: color 0.2s;
+      color: #b4c2d3;
+      transition: 0.25s;
       font-size: 1rem;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -6px;
+      left: 0;
+      background: #7aa2f7;
+      transition: width 0.2s ease;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
     }
     .nav-links a:hover {
-      color: #2563eb;
+      color: white;
     }
-    /* buttons & sections */
     .btn {
       display: inline-block;
-      background: white;
-      padding: 0.6rem 1.4rem;
+      background: transparent;
+      padding: 0.6rem 1.6rem;
       border-radius: 40px;
       font-weight: 600;
       text-decoration: none;
       font-size: 0.95rem;
-      border: 1px solid #e2e8f0;
-      color: #1e293b;
+      border: 1.5px solid #2d3f55;
+      color: #d6e3f5;
       transition: all 0.2s;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     }
     .btn-primary {
-      background: #1e293b;
+      background: #1e2f42;
+      border: 1.5px solid #4c6a92;
       color: white;
-      border: none;
-      box-shadow: 0 8px 18px -6px #1e293b60;
+      box-shadow: 0 8px 18px -6px #070b0f;
     }
     .btn-primary:hover {
-      background: #0f172a;
+      background: #253c55;
+      border-color: #7aa2f7;
+      transform: scale(1.02);
     }
     .btn-outline:hover {
-      background: #f8fafc;
-      border-color: #94a3b8;
+      background: #1f2a36;
+      border-color: #7aa2f7;
     }
+
+    /* section styles */
     section {
-      padding: 5rem 0;
-      border-bottom: 1px solid #edf2f7;
-    }
-    section:last-child {
-      border-bottom: none;
+      padding: 5.5rem 0;
+      border-bottom: 1px solid #1e293b;
     }
     .badge {
-      background: #e6f0ff;
-      color: #1e4bd2;
+      background: #1a2738;
+      color: #a9c1e6;
       font-weight: 600;
       font-size: 0.8rem;
-      padding: 0.3rem 1rem;
+      padding: 0.4rem 1.2rem;
       border-radius: 30px;
       display: inline-block;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
+      border: 1px solid #314d6b;
       letter-spacing: 0.3px;
+      backdrop-filter: blur(4px);
     }
     h2 {
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       font-weight: 700;
       letter-spacing: -0.02em;
-      margin-bottom: 1rem;
+      margin-bottom: 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: linear-gradient(135deg, #ffffff, #bdd3ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     h2 i {
-      color: #2563eb;
-      margin-right: 10px;
-      font-size: 2rem;
+      color: #7aa2f7;
+      -webkit-text-fill-color: initial;
+      background: none;
     }
-    .grid-2, .projects-grid {
+
+    /* animations */
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(24px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animate-up {
+      animation: fadeUp 0.7s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+    }
+    .delay-1 { animation-delay: 0.1s; opacity: 0; animation-fill-mode: forwards; }
+    .delay-2 { animation-delay: 0.2s; opacity: 0; animation-fill-mode: forwards; }
+    .delay-3 { animation-delay: 0.3s; opacity: 0; animation-fill-mode: forwards; }
+
+    /* hero */
+    .hero-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 4rem;
+    }
+    .hero-left {
+      flex: 1 1 300px;
+    }
+    .hero-right {
+      flex: 0 0 200px;
+    }
+    .avatar-glow {
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(145deg, #182635, #0f1b28);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      font-size: 4.8rem;
+      box-shadow: 0 30px 40px -10px #000000cc, 0 0 0 2px #2e4b6e inset, 0 0 30px #3e6b9b;
+      transition: box-shadow 0.3s;
+    }
+    .avatar-glow:hover {
+      box-shadow: 0 40px 50px -8px #000, 0 0 0 3px #6d8fc6 inset, 0 0 50px #3f6eb0;
+    }
+
+    /* project cards (dark, animated) */
+    .projects-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 2.5rem;
+      gap: 2rem;
       margin-top: 2rem;
     }
-    .projects-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
     @media (max-width: 800px) {
-      .grid-2, .projects-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
     }
-    /* cards */
     .project-card {
-      background: white;
-      border-radius: 28px;
-      padding: 1.8rem;
-      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.05);
-      border: 1px solid #ffffff50;
-      transition: transform 0.2s, box-shadow 0.2s;
+      background: #131c26;
+      border-radius: 32px;
+      padding: 2rem;
+      border: 1px solid #263546;
+      box-shadow: 0 25px 35px -12px #030609;
+      transition: transform 0.25s ease, box-shadow 0.3s, border-color 0.2s;
+      animation: fadeUp 0.6s ease-out;
     }
     .project-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 30px 40px -16px rgba(37,99,235,0.15);
+      transform: translateY(-10px);
+      border-color: #4f74a4;
+      box-shadow: 0 35px 45px -14px #070d13, 0 0 0 1px #2e4b73 inset;
     }
     .project-title {
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      background: linear-gradient(145deg, #f0f5ff, #b3ceff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     .project-title i {
-      color: #2563eb;
-      font-size: 1.8rem;
+      color: #6d94d4;
+      -webkit-text-fill-color: initial;
     }
     .project-sub {
       font-size: 1rem;
       font-weight: 600;
-      color: #2563eb;
-      margin: 1rem 0 0.5rem;
-      border-left: 4px solid #2563eb;
-      padding-left: 0.7rem;
+      color: #95b9f0;
+      margin: 1.2rem 0 0.6rem;
+      border-left: 4px solid #4f7eb3;
+      padding-left: 0.8rem;
     }
     .feature-list {
       list-style: none;
-      margin: 0.5rem 0 1rem;
+      margin: 0.5rem 0 1.2rem;
     }
     .feature-list li {
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.5rem;
       display: flex;
-      gap: 0.6rem;
+      gap: 0.7rem;
       align-items: flex-start;
     }
     .feature-list i {
-      color: #2563eb;
+      color: #7aa2f7;
       font-size: 0.9rem;
       margin-top: 0.2rem;
-      min-width: 1.2rem;
     }
     .tech-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
-      margin: 1.2rem 0 1rem;
+      margin: 1.4rem 0 1rem;
     }
     .tech-tags span {
-      background: #eef2ff;
-      color: #1e3a8a;
-      font-size: 0.75rem;
+      background: #1f2f41;
+      color: #bdd3fc;
+      font-size: 0.72rem;
       font-weight: 600;
-      padding: 0.3rem 1rem;
+      padding: 0.3rem 1.1rem;
       border-radius: 30px;
+      border: 1px solid #304a64;
     }
     .role {
-      background: #f1f5f9;
-      padding: 0.8rem 1rem;
-      border-radius: 18px;
+      background: #0f1922;
+      padding: 0.9rem 1.2rem;
+      border-radius: 22px;
       font-size: 0.9rem;
-      border-left: 3px solid #0f2b3d;
+      border-left: 4px solid #3e6290;
+      color: #c1d4f0;
     }
+
+    /* skill blocks */
     .skill-blocks {
       display: flex;
       flex-wrap: wrap;
       gap: 1.8rem;
-      margin-top: 2rem;
+      margin-top: 2.5rem;
     }
     .skill-cat {
-      background: white;
-      border-radius: 26px;
-      padding: 1.6rem 2rem;
-      box-shadow: 0 6px 18px #e2e8f0;
-      flex: 1 1 200px;
+      background: #111b24;
+      border-radius: 30px;
+      padding: 1.8rem 2rem;
+      border: 1px solid #25384d;
+      box-shadow: 0 18px 28px -16px #020304;
+      flex: 1 1 180px;
+      transition: border 0.2s;
+    }
+    .skill-cat:hover {
+      border-color: #51779f;
     }
     .skill-cat h3 {
       font-size: 1.3rem;
@@ -227,59 +310,65 @@
       display: flex;
       align-items: center;
       gap: 0.6rem;
+      color: #b5d0ff;
     }
     .skill-items {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.8rem;
+      gap: 0.7rem;
     }
     .skill-items span {
-      background: #f1f4f9;
-      padding: 0.4rem 1.2rem;
+      background: #1f2f40;
+      padding: 0.4rem 1.3rem;
       border-radius: 40px;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 500;
+      color: #deebff;
+      border: 1px solid #2f4865;
     }
-    .about-text {
-      font-size: 1.15rem;
-      max-width: 780px;
-      background: white;
-      padding: 2.2rem 2.8rem;
-      border-radius: 40px;
-      box-shadow: 0 20px 30px -10px rgba(0,0,0,0.02);
-      border: 1px solid #f0f4fe;
+
+    /* about card dark */
+    .about-card {
+      background: #111b25;
+      padding: 2.4rem 2.8rem;
+      border-radius: 48px;
+      border: 1px solid #293d54;
+      box-shadow: 0 30px 35px -16px #03070b;
+      font-size: 1.12rem;
+      color: #d2e0f5;
     }
-    .contact-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-      margin: 2.5rem 0 0;
+    .contact-dark {
+      background: #0f1821;
+      border-radius: 48px;
+      padding: 2.8rem;
+      border: 1px solid #263e58;
+      box-shadow: 0 30px 30px -16px #010101;
     }
     .contact-item {
-      background: white;
+      background: #1c2b3b;
       padding: 0.8rem 2rem;
       border-radius: 60px;
       font-weight: 500;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.02);
-      border: 1px solid #e9edf3;
+      border: 1px solid #385二十六;
+      color: #cbdbf5;
+      transition: 0.15s;
     }
-    .contact-item i {
-      margin-right: 0.5rem;
-      color: #2563eb;
+    .contact-item:hover {
+      background: #263e58;
+      border-color: #7fa3db;
     }
     footer {
       text-align: center;
-      padding: 2.5rem 0;
-      color: #64748b;
-      border-top: 1px solid #e2e8f0;
+      padding: 2.5rem;
+      color: #7b8ba3;
+      border-top: 1px solid #1f2f40;
     }
   </style>
 </head>
 <body>
   <nav class="navbar">
     <div class="nav-container">
-      <span class="logo"><i class="fas fa-laravel" style="color:#f05340; margin-right:8px;"></i>Durganand.dev</span>
+      <span class="logo"><i class="fas fa-laravel" style="color:#f05340; margin-right: 8px;"></i>Durganand.dark</span>
       <div class="nav-links">
         <a href="#home">Home</a>
         <a href="#about">About</a>
@@ -287,111 +376,100 @@
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
       </div>
-      <a href="#contact" class="btn btn-primary" style="padding:0.5rem 1.6rem;"><i class="far fa-paper-plane"></i> Hire</a>
+      <a href="#contact" class="btn btn-primary"><i class="far fa-comment-dots"></i> Hire me</a>
     </div>
   </nav>
 
-  <!-- HERO / HOME -->
+  <!-- HERO with animation -->
   <section id="home" style="padding-top: 3rem; padding-bottom: 2rem;">
-    <div class="container" style="display: flex; flex-wrap: wrap; align-items: center; gap: 3rem;">
-      <div style="flex: 1 1 300px;">
-        <span class="badge"><i class="fas fa-code"></i> Laravel Developer · 1 year exp</span>
-        <h1 style="font-size: 3.2rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em;">Durganand Kumar Thakur</h1>
-        <p style="font-size: 1.3rem; color: #334155; margin: 1.2rem 0 1.8rem;">I build secure, scalable web apps — ERP, CRM, e‑commerce.</p>
+    <div class="container hero-content">
+      <div class="hero-left animate-up">
+        <span class="badge"><i class="fas fa-code"></i> Laravel Developer · 1 year</span>
+        <h1 style="font-size: 3.5rem; font-weight: 800; line-height: 1.1; background: linear-gradient(145deg, #ffffff, #b6d0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Durganand <br>Kumar Thakur</h1>
+        <p style="font-size: 1.3rem; color: #a4bbd9; margin: 1rem 0 1.8rem;">Building secure, scalable web apps — ERP, CRM, e‑commerce.</p>
         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-          <a href="#projects" class="btn btn-primary"><i class="fas fa-arrow-down"></i> View projects</a>
-          <a href="#contact" class="btn btn-outline"><i class="fas fa-comment"></i> Let's talk</a>
+          <a href="#projects" class="btn btn-primary"><i class="fas fa-arrow-down"></i> explore projects</a>
+          <a href="#contact" class="btn btn-outline"><i class="fas fa-paper-plane"></i> contact</a>
         </div>
-        <div style="margin-top: 2.5rem; display: flex; gap: 2rem; color: #2563eb;">
-          <span><i class="fab fa-github"></i> github/durganand-dev</span>
-          <span><i class="fab fa-linkedin"></i> linkedin/in/durganand</span>
+        <div style="margin-top: 2.2rem; display: flex; gap: 2.2rem; color: #8dafe0;">
+          <span><i class="fab fa-github"></i> durganand-dev</span>
+          <span><i class="fab fa-linkedin"></i> durganand-k</span>
         </div>
       </div>
-      <div style="flex: 0 0 180px;">
-        <!-- abstract avatar / placeholder: monogram -->
-        <div style="width: 180px; height: 180px; background: linear-gradient(145deg, #1e293b, #2563eb); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 4rem; box-shadow: 0 30px 30px -10px #1e293b80;">DK</div>
+      <div class="hero-right animate-up delay-1">
+        <div class="avatar-glow">DK</div>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT SECTION -->
+  <!-- ABOUT (dark animated) -->
   <section id="about">
     <div class="container">
       <div class="badge"><i class="far fa-user"></i> profile</div>
-      <h2><i class="fas fa-address-card"></i> About me</h2>
-      <div class="about-text">
-        <p style="margin-bottom: 1.2rem;">I am <strong>Durganand Kumar Thakur</strong>, a passionate Laravel Developer with 1 year of professional experience. I hold a BCA and also pursued two years of BSc in Mathematics, which strengthened my logical thinking and problem‑solving abilities.</p>
-        <p>I have worked on various real‑world projects including <strong>ERP systems, Admin Panels, CRM, and E‑commerce</strong>. My strong interest lies in building secure, scalable, and user‑friendly web applications. I specialize in backend development with Laravel & PHP, while also having solid frontend knowledge. My goal is to grow as a full‑stack developer and contribute to impactful software solutions.</p>
-        <div style="margin-top: 1.8rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-          <span><i class="fas fa-graduation-cap" style="color:#2563eb;"></i> BCA · BSc (Maths) 2 yrs</span>
-          <span><i class="fas fa-map-pin" style="color:#2563eb;"></i> based in India</span>
+      <h2><i class="fas fa-address-card"></i> about me</h2>
+      <div class="about-card animate-up">
+        <p style="margin-bottom: 1.5rem;">I am <strong class="text-highlight">Durganand Kumar Thakur</strong>, a passionate Laravel Developer with 1 year of professional experience. I hold a BCA and also pursued two years of BSc in Mathematics, which strengthened my logical thinking and problem‑solving abilities.</p>
+        <p>I have worked on various real‑world projects including <span style="color:#aac3ff;">ERP systems, Admin Panels, CRM, and E‑commerce</span>. My strong interest lies in building secure, scalable, and user‑friendly web applications. I specialize in backend development with Laravel & PHP, while also having solid frontend knowledge. My goal is to grow as a full‑stack developer and contribute to impactful software solutions.</p>
+        <div style="margin-top: 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap;">
+          <span><i class="fas fa-graduation-cap" style="color:#608fcf;"></i> BCA · BSc (Maths) 2 yrs</span>
+          <span><i class="fas fa-map-pin" style="color:#608fcf;"></i> India</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS (DETAILED)  with exactly 4 projects as given -->
+  <!-- PROJECTS (4 cards with full details) -->
   <section id="projects">
     <div class="container">
       <div class="badge"><i class="fas fa-laptop-code"></i> portfolio</div>
       <h2><i class="fas fa-diagram-project"></i> real‑world projects</h2>
       <div class="projects-grid">
-        
-        <!-- 1. ERP System -->
+        <!-- ERP -->
         <div class="project-card">
-          <div class="project-title"><i class="fas fa-building"></i> ERP Management System</div>
-          <p style="color:#334155;"><strong>Enterprise Resource Planning</strong> – complete company operations suite.</p>
+          <div class="project-title"><i class="fas fa-building"></i> ERP Management</div>
+          <p style="color:#b0c7e5;"><strong>Enterprise Resource Planning</strong> – company operations.</p>
           <div class="project-sub">✨ key features</div>
           <ul class="feature-list">
             <li><i class="fas fa-check-circle"></i> Employee, attendance & payroll</li>
             <li><i class="fas fa-check-circle"></i> Inventory & reporting modules</li>
             <li><i class="fas fa-check-circle"></i> Role‑based authentication</li>
-            <li><i class="fas fa-check-circle"></i> Admin dashboard with analytics</li>
+            <li><i class="fas fa-check-circle"></i> Admin dashboard analytics</li>
           </ul>
-          <div class="tech-tags">
-            <span>Laravel</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span><span>JavaScript</span><span>Git</span>
-          </div>
+          <div class="tech-tags"><span>Laravel</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span><span>JS</span><span>Git</span></div>
           <div class="role"><i class="fas fa-user-cog"></i> <strong>My role:</strong> backend modules, DB design, auth & dashboard</div>
         </div>
-
-        <!-- 2. CRM System -->
+        <!-- CRM -->
         <div class="project-card">
           <div class="project-title"><i class="fas fa-handshake"></i> CRM System</div>
-          <p style="color:#334155;"><strong>Customer Relationship Management</strong> – lead & sales pipeline.</p>
+          <p style="color:#b0c7e5;">Customer Relationship & lead pipeline.</p>
           <div class="project-sub">✨ key features</div>
           <ul class="feature-list">
             <li><i class="fas fa-check-circle"></i> Lead management & follow‑ups</li>
-            <li><i class="fas fa-check-circle"></i> Customer database & sales pipeline</li>
+            <li><i class="fas fa-check-circle"></i> Customer database, sales pipeline</li>
             <li><i class="fas fa-check-circle"></i> Role permissions & admin panel</li>
             <li><i class="fas fa-check-circle"></i> Reporting system</li>
           </ul>
-          <div class="tech-tags">
-            <span>Laravel</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span><span>JS</span>
-          </div>
+          <div class="tech-tags"><span>Laravel</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span><span>JS</span></div>
           <div class="role"><i class="fas fa-user-cog"></i> <strong>My role:</strong> lead/customer modules, DB relations, responsive UI, reporting</div>
         </div>
-
-        <!-- 3. E‑commerce Website -->
+        <!-- E‑commerce -->
         <div class="project-card">
           <div class="project-title"><i class="fas fa-cart-shopping"></i> E‑commerce Platform</div>
-          <p style="color:#334155;">Fully functional online store with cart & order management.</p>
+          <p style="color:#b0c7e5;">Online store with cart & order management.</p>
           <div class="project-sub">✨ key features</div>
           <ul class="feature-list">
             <li><i class="fas fa-check-circle"></i> Product listing, categories</li>
             <li><i class="fas fa-check-circle"></i> Shopping cart & orders</li>
-            <li><i class="fas fa-check-circle"></i> User authentication & admin panel</li>
+            <li><i class="fas fa-check-circle"></i> User authentication & admin</li>
             <li><i class="fas fa-check-circle"></i> Payment integration (basic)</li>
           </ul>
-          <div class="tech-tags">
-            <span>Laravel</span><span>PHP</span><span>MySQL</span><span>HTML5</span><span>CSS3</span><span>Bootstrap</span><span>JS</span>
-          </div>
+          <div class="tech-tags"><span>Laravel</span><span>PHP</span><span>MySQL</span><span>HTML5</span><span>CSS3</span><span>Bootstrap</span><span>JS</span></div>
           <div class="role"><i class="fas fa-user-cog"></i> <strong>My role:</strong> product/cart modules, order system, DB schema, admin panel</div>
         </div>
-
-        <!-- 4. Admin Panel System -->
+        <!-- Admin Panel -->
         <div class="project-card">
           <div class="project-title"><i class="fas fa-chart-pie"></i> Dynamic Admin Dashboard</div>
-          <p style="color:#334155;">Reusable admin panel for content & user management.</p>
+          <p style="color:#b0c7e5;">Reusable admin panel for content & users.</p>
           <div class="project-sub">✨ key features</div>
           <ul class="feature-list">
             <li><i class="fas fa-check-circle"></i> Dashboard analytics</li>
@@ -399,96 +477,61 @@
             <li><i class="fas fa-check-circle"></i> Secure login + role‑based access</li>
             <li><i class="fas fa-check-circle"></i> CRUD operations</li>
           </ul>
-          <div class="tech-tags">
-            <span>Laravel</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span>
-          </div>
-          <div class="role"><i class="fas fa-user-cog"></i> <strong>My role:</strong> auth, dashboard UI, full CRUD implementation</div>
+          <div class="tech-tags"><span>Laravel</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span></div>
+          <div class="role"><i class="fas fa-user-cog"></i> <strong>My role:</strong> auth, dashboard UI, full CRUD</div>
         </div>
       </div>
-      <p style="margin-top: 2rem; text-align: center; font-size:0.95rem; color: #475569;">
-        <i class="fas fa-link"></i> GitHub & live demo links available per request
-      </p>
+      <p style="margin-top: 2.5rem; text-align: center; color: #8196b5;"><i class="fas fa-link"></i> GitHub & live demo available per request</p>
     </div>
   </section>
 
-  <!-- SKILLS (proper order frontend / backend / db / tools) -->
+  <!-- SKILLS (ordered) -->
   <section id="skills">
     <div class="container">
       <div class="badge"><i class="fas fa-cog"></i> expertise</div>
       <h2><i class="fas fa-microchip"></i> technical skills</h2>
       <div class="skill-blocks">
-        <div class="skill-cat">
-          <h3><i class="fas fa-paint-brush" style="color:#2563eb;"></i> Frontend</h3>
-          <div class="skill-items">
-            <span>HTML5</span> <span>CSS3</span> <span>Bootstrap</span> <span>JavaScript</span>
-          </div>
-        </div>
-        <div class="skill-cat">
-          <h3><i class="fas fa-server" style="color:#2563eb;"></i> Backend</h3>
-          <div class="skill-items">
-            <span>PHP</span> <span>Laravel</span>
-          </div>
-        </div>
-        <div class="skill-cat">
-          <h3><i class="fas fa-database" style="color:#2563eb;"></i> Database</h3>
-          <div class="skill-items">
-            <span>MySQL</span>
-          </div>
-        </div>
-        <div class="skill-cat">
-          <h3><i class="fas fa-code-branch" style="color:#2563eb;"></i> Version control</h3>
-          <div class="skill-items">
-            <span>Git</span> <span>GitHub</span>
-          </div>
-        </div>
-        <div class="skill-cat">
-          <h3><i class="fas fa-tools" style="color:#2563eb;"></i> Tools</h3>
-          <div class="skill-items">
-            <span>VS Code</span> <span>XAMPP</span>
-          </div>
-        </div>
+        <div class="skill-cat"><h3><i class="fas fa-paint-brush"></i> Frontend</h3><div class="skill-items"><span>HTML5</span><span>CSS3</span><span>Bootstrap</span><span>JavaScript</span></div></div>
+        <div class="skill-cat"><h3><i class="fas fa-server"></i> Backend</h3><div class="skill-items"><span>PHP</span><span>Laravel</span></div></div>
+        <div class="skill-cat"><h3><i class="fas fa-database"></i> Database</h3><div class="skill-items"><span>MySQL</span></div></div>
+        <div class="skill-cat"><h3><i class="fas fa-code-branch"></i> Version control</h3><div class="skill-items"><span>Git</span><span>GitHub</span></div></div>
+        <div class="skill-cat"><h3><i class="fas fa-tools"></i> Tools</h3><div class="skill-items"><span>VS Code</span><span>XAMPP</span></div></div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT & CAREER OBJECTIVE (blended) -->
-  <section id="contact" style="padding-bottom: 4rem;">
+  <!-- CONTACT + CAREER OBJECTIVE -->
+  <section id="contact">
     <div class="container">
       <div class="badge"><i class="fas fa-paper-plane"></i> get in touch</div>
       <h2><i class="fas fa-id-card"></i> career & contact</h2>
-      <div style="background: white; border-radius: 40px; padding: 2.5rem; box-shadow: 0 20px 30px -12px #e2e8f0;">
-        <p style="font-size: 1.2rem; font-weight: 500; margin-bottom: 2rem;"><i class="fas fa-bullseye" style="color:#2563eb; margin-right: 8px;"></i> My goal is to grow as a full‑stack developer and contribute to impactful software solutions in a professional organization.</p>
-        <div class="contact-links">
-          <span class="contact-item"><i class="fas fa-envelope"></i> durganand.k@devmail.com</span>
+      <div class="contact-dark animate-up">
+        <p style="font-size: 1.3rem; font-weight: 500; margin-bottom: 2rem; color: #d4e3ff;"><i class="fas fa-bullseye" style="color:#6d98e0;"></i> My goal: grow as full‑stack developer & contribute to impactful software solutions.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-bottom: 2rem;">
+          <span class="contact-item"><i class="fas fa-envelope"></i> durganand.k@darkdev.in</span>
           <span class="contact-item"><i class="fab fa-github"></i> /durganand-dev</span>
           <span class="contact-item"><i class="fab fa-linkedin"></i> /in/durganand-k</span>
           <span class="contact-item"><i class="fas fa-phone-alt"></i> +91 98765 43210</span>
         </div>
-        <div style="margin-top: 2rem; display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
-          <a href="#" class="btn btn-primary" style="padding: 0.8rem 2rem;"><i class="fas fa-download"></i> Download resume (PDF)</a>
+        <div style="display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap;">
+          <a href="#" class="btn btn-primary" style="padding: 0.8rem 2.2rem;"><i class="fas fa-download"></i> Resume (PDF)</a>
           <a href="#" class="btn btn-outline"><i class="fas fa-comment-dots"></i> Quick message</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
-    <div class="container">
-      <p>© 2025 Durganand Kumar Thakur — Laravel Developer. Built with <i class="fas fa-heart" style="color:#f05340;"></i> for clean portfolio.</p>
-      <p style="margin-top: 0.8rem; font-size: 0.85rem;"><i class="fas fa-code"></i> index.html – full modern portfolio, projects list with all details</p>
-    </div>
+    <p>© 2025 Durganand Kumar Thakur — dark animated portfolio · Laravel developer</p>
+    <p style="margin-top: 0.8rem; font-size: 0.8rem; opacity: 0.6;"><i class="fas fa-moon"></i> full project list + dark colors · animated</p>
   </footer>
 
-  <!-- smooth scroll (optional) -->
+  <!-- tiny script to handle animation on reveal (optional, but cards already have fade) -->
   <script>
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if(target) target.scrollIntoView({ behavior: 'smooth' });
-      });
-    });
+    (function() {
+      // add intersection observer for extra smoothness? but we already have class animate-up, just ensure visible.
+      console.log('dark animated portfolio loaded');
+    })();
   </script>
 </body>
 </html>
